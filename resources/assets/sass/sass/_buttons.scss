@@ -1,0 +1,42 @@
+
+// Button for the themes
+
+@mixin btn-cus ($bkgd,$clr,$wght){
+      background-color: $bkgd;
+      color: $clr;
+      font-weight: $wght;
+}
+
+@mixin btn-cus-o ($bkgd,$clr,$wght){
+      border:1px solid $bkgd;
+      color: $clr;
+      font-weight: $wght;
+      &:hover{
+            background-color: $bkgd;
+            color:$cl_pm;
+      }
+}
+
+
+.bl-o{
+      @include btn-cus-o($cl_pm,$cl_pm,400);
+      text-align: center;
+      font-size: 1.8rem;
+      margin:1rem 0;
+      padding:1rem 3rem;
+      border-radius: 0.6rem;
+      &:hover{
+            color:#fff;
+      }
+}
+.bk-o{
+      @include btn-cus-o(#000,#000,400);
+      text-align: center;
+      font-size: 1.8rem;
+      // margin:1rem 0;
+      padding:0.3rem 2rem !important;
+      border-radius: 0.6rem;
+      &:hover{
+            color:#fff!important;
+      }
+}

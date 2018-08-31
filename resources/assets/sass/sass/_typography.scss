@@ -1,0 +1,24 @@
+
+
+
+
+$ft_pm: 'Roboto', sans-serif;
+$ft_sec: 'Open Sans',sans-serif;
+
+
+
+@mixin ft_pm($wght, $cl, $size,$align){
+      font-family: $ft_pm;
+      font-weight: $wght;
+      color:$cl;
+      font-size: $size;
+      text-align: $align;
+}
+
+@mixin ft_sec($wght,$cl,$size,$align){
+      font-family: $ft_pm;
+      font-weight: $wght;
+      color:$cl;
+      font-size: $size;
+      text-align: $align;
+}
