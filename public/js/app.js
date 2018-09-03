@@ -14248,7 +14248,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             var vm = this;
-            page_url = page_url || '/api/contacts';
+            page_url = page_url || '/kemmet/api/contacts';
             fetch(page_url).then(function (res) {
                 return res.json();
             }).then(function (res) {
@@ -14273,7 +14273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             if (confirm('Are You Sure?')) {
-                fetch("api/contacts/" + id, {
+                fetch("kemmet/api/contacts/" + id, {
                     method: 'delete'
                 }).then(function (res) {
                     return res.json();
@@ -14290,7 +14290,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.edit === false) {
                 // Add
-                fetch('api/contacts', {
+                fetch('kemmet/api/contacts', {
                     method: 'post',
                     body: JSON.stringify(this.contact),
                     headers: {
@@ -14310,7 +14310,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             } else {
                 // Update
-                fetch('api/contacts', {
+                fetch('kemmet/api/contacts', {
                     method: 'put',
                     body: JSON.stringify(this.contact),
                     headers: {

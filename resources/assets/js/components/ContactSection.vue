@@ -162,7 +162,7 @@
     methods: {
         fetchData(page_url) {
             let vm = this;
-            page_url = page_url || '/api/contacts';
+            page_url = page_url || '/kemmet/api/contacts';
             fetch(page_url)
             .then(res => res.json())
             .then(res => {
@@ -184,7 +184,7 @@
         },
         deleteContact(id) {
             if (confirm('Are You Sure?')) {
-                fetch(`api/contacts/${id}`, {
+                fetch(`kemmet/api/contacts/${id}`, {
                 method: 'delete'
                 })
                 .then(res => res.json())
@@ -198,7 +198,7 @@
         addContact() {
             if (this.edit === false) {
                 // Add
-                fetch('api/contacts', {
+                fetch('kemmet/api/contacts', {
                 method: 'post',
                 body: JSON.stringify(this.contact),
                 headers: {
@@ -217,7 +217,7 @@
           .catch(err => console.log(err));
         } else {
             // Update
-            fetch('api/contacts', {
+            fetch('kemmet/api/contacts', {
             method: 'put',
             body: JSON.stringify(this.contact),
             headers: {
