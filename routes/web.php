@@ -20,6 +20,7 @@ Route::get('/goals', 'SiteController@goals');
 Route::get('/mission', 'SiteController@mission');
 Route::get('/vision', 'SiteController@vision');
 Route::get('/contact', 'SiteController@contact');
+Route::get('/subs', 'SiteController@subs');
 Route::get('/statement', 'SiteController@statement');
 Route::get('/register-pending', 'SiteController@pending');
 Route::get('/visitor/dashboard', 'SiteController@visitor');

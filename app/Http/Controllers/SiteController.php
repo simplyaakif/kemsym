@@ -27,6 +27,10 @@ class SiteController extends Controller
         $title = 'Contact Us';
         return view('pages/contact')->with('title', $title);
     }
+    public function subs(){
+        $title = 'Subscriptions';
+        return view('pages/subs')->with('title', $title);
+    }
     public function statement(){
         $title = 'Bold Statement';
         return view('pages/statement')->with('title', $title);

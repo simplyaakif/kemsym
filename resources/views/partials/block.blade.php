@@ -206,7 +206,7 @@
                         </div>
                         <div class="tex text-center">
                             <p class="text-center">Cost Plans For Products <br> and Services</p>
-                            <a href="" class="btn bl-o">Get Started</a>
+                            <a href="{{url('/subs')}}" class="btn bl-o">Get Started</a>
                         </div>
                     </div>
                 </div>
