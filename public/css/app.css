@@ -143,7 +143,7 @@ body {
 }
 
 .crow .pricing {
-  background: url("../../img/bluBkgd.jpg");
+  background: url("../img/bluBkgd.jpg");
   color: #fff;
   padding: 10rem 5rem;
 }
@@ -154,7 +154,7 @@ body {
 }
 
 .crow .about {
-  background: url("../../img/companyStaff.jpg");
+  background: url("../img/companyStaff.jpg");
   min-height: 300px;
   background-size: cover;
 }

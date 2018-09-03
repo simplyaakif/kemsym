@@ -19,6 +19,7 @@ Vue.use(VueResource);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('contact-form', require('./components/ContactForm.vue'));
 Vue.component('contact-section', require('./components/ContactSection.vue'));
+Vue.component('users-section', require('./components/UsersSection.vue'));
 const app = new Vue({
     el: '#app'
 });
