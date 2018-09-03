@@ -41,7 +41,8 @@ Route::delete('/kemmet/api/users/{user}', 'UsersController@destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/admin/dashboard','AdminController@index');
 Route::get('/admin/contact','AdminController@contact');
 Route::get('/admin/users','AdminController@users');
+Route::get('/admin/subscription','AdminController@subscription');
+Route::get('/admin/profile','AdminController@profile');

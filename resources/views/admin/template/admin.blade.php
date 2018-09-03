@@ -17,7 +17,7 @@
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>CoreUI Free Bootstrap Admin Template</title>
+    <title>Admin | Kemmet System</title>
     <!-- Icons-->
     <link href="{{URL::asset('admin/vendors/@coreui/icons/css/coreui-icons.min.css')}}" rel="stylesheet">
     <link href="admin/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -84,14 +84,14 @@
             <div class="divider"></div>
             
               <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                                <i class="fa fa-lock"></i> Logout
-                                            </a>
-         
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                <i class="fa fa-lock"></i> Logout
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </div>
         </li>
       </ul>
@@ -124,7 +124,7 @@
             </li>
             <li class="nav-title">Plans</li>
             <li class="nav-item">
-              <a class="nav-link" href="charts.html">
+              <a class="nav-link" href="{{url('admin/subscription')}}">
                 <i class="nav-icon icon-pie-chart"></i> Subscriptions</a>
             </li>
 

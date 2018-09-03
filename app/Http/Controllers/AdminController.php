@@ -19,4 +19,10 @@ class AdminController extends Controller
     public function users(){
         return view('admin/pages/users');
     }
+    public function subscription(){
+        return view('admin/pages/subscription');
+    }
+    public function profile(){
+        return view('admin/pages/profile');
+    }
 }
