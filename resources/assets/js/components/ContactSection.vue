@@ -184,7 +184,7 @@
         },
         deleteContact(id) {
             if (confirm('Are You Sure?')) {
-                fetch(`kemmet/api/contacts/${id}`, {
+                fetch(`/kemmet/api/contacts/${id}`, {
                 method: 'delete'
                 })
                 .then(res => res.json())
@@ -198,7 +198,7 @@
         addContact() {
             if (this.edit === false) {
                 // Add
-                fetch('kemmet/api/contacts', {
+                fetch('/kemmet/api/contacts', {
                 method: 'post',
                 body: JSON.stringify(this.contact),
                 headers: {
@@ -217,7 +217,7 @@
           .catch(err => console.log(err));
         } else {
             // Update
-            fetch('kemmet/api/contacts', {
+            fetch('/kemmet/api/contacts', {
             method: 'put',
             body: JSON.stringify(this.contact),
             headers: {
