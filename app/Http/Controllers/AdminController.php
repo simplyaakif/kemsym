@@ -13,4 +13,7 @@ class AdminController extends Controller
     public function index(){
         return view('admin/pages/index');
     }
+    public function contact(){
+        return view('admin/pages/contact');
+    }
 }

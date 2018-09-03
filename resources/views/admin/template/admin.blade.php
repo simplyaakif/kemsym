@@ -16,6 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>CoreUI Free Bootstrap Admin Template</title>
     <!-- Icons-->
     <link href="{{URL::asset('admin/vendors/@coreui/icons/css/coreui-icons.min.css')}}" rel="stylesheet">
@@ -25,6 +26,7 @@
     <!-- Main styles for this application-->
     <link href="admin/css/style.css" rel="stylesheet">
     <link href="admin/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('admin/css/admin.css')}}">
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <header class="app-header navbar">
@@ -81,8 +83,15 @@
             
             <div class="divider"></div>
             
-            <a class="dropdown-item" href="#">
-              <i class="fa fa-lock"></i> Logout</a>
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                <i class="fa fa-lock"></i> Logout
+                                            </a>
+         
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
           </div>
         </li>
       </ul>
@@ -134,7 +143,6 @@
       </div>
     
 
-    
     @yield('content')
     
     <!-- CoreUI and necessary plugins-->
@@ -143,20 +151,22 @@
     </div>
     <footer class="app-footer">
       <div>
-        <a href="https://coreui.io">CoreUI</a>
-        <span>&copy; 2018 creativeLabs.</span>
+        <a href="{{url('/')}}">Kemmet Systems</a>
+        <span>&copy; 2018 Kemmet Systems.</span>
       </div>
       <div class="ml-auto">
         <span>Powered by</span>
-        <a href="https://coreui.io">CoreUI</a>
+        <a href="https://dezinehouse.biz">DH</a>
       </div>
     </footer>
     <!-- CoreUI and necessary plugins-->
     <script src="admin/vendors/jquery/js/jquery.min.js"></script>
     <script src="admin/vendors/popper.js/js/popper.min.js"></script>
     <script src="admin/vendors/bootstrap/js/bootstrap.min.js"></script>
-    <script src="admin/vendors/pace-progress/js/pace.min.js"></script>
+    {{--  <script src="admin/vendors/pace-progress/js/pace.min.js"></script>  --}}
     <script src="admin/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
     <script src="admin/vendors/@coreui/coreui/js/coreui.min.js"></script>
+
+    <script src="{{URL::asset('js/app.js')}}"></script>
   </body>
 </html>

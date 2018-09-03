@@ -31,4 +31,12 @@ class SiteController extends Controller
         $title = 'Bold Statement';
         return view('pages/statement')->with('title', $title);
     }
+    public function pending(){
+        $title = 'Registration Inactive';
+        return view('pages/pending')->with('title', $title);
+    }
+    public function visitor(){
+        $title = 'Dashboard';
+        return view('pages/visitor')->with('title', $title);
+    }
 }
