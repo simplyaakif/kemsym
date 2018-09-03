@@ -27,17 +27,17 @@ Route::get('/visitor/dashboard', 'SiteController@visitor');
 Auth::routes();
 
 //Contact Section
-Route::get('/kemmet/api/contacts', 'ContactController@index');
-Route::get('/kemmet/api/contacts/{contact}','ContactController@show');
-Route::post('/kemmet/api/contacts', 'ContactController@store');
-Route::put('/kemmet/api/contacts', 'ContactController@store');
-Route::delete('/kemmet/api/contacts/{contact}', 'ContactController@destroy');
+Route::get('/api/contacts', 'ContactController@index');
+Route::get('/api/contacts/{contact}','ContactController@show');
+Route::post('/api/contacts', 'ContactController@store');
+Route::put('/api/contacts', 'ContactController@store');
+Route::delete('/api/contacts/{contact}', 'ContactController@destroy');
 //Users Section
-Route::get('/kemmet/api/users', 'UsersController@index');
-Route::get('/kemmet/api/users/{user}','UsersController@show');
-Route::post('/kemmet/api/users', 'UsersController@store');
-Route::put('/kemmet/api/users', 'UsersController@store');
-Route::delete('/kemmet/api/users/{user}', 'UsersController@destroy');
+Route::get('/api/users', 'UsersController@index');
+Route::get('/api/users/{user}','UsersController@show');
+Route::post('/api/users', 'UsersController@store');
+Route::put('/api/users', 'UsersController@store');
+Route::delete('/api/users/{user}', 'UsersController@destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
