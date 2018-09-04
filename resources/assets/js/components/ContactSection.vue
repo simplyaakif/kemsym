@@ -249,6 +249,7 @@
         this.contact.status = contact.status;
         },
         newContact(){
+            this.$toaster.success('Your toaster <strong>success</strong> message.', {timeout: 3000})
             this.editMode=true;
             this.edit = false;
             this.contact.id = '';
