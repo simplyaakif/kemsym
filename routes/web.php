@@ -16,6 +16,29 @@ Route::get('/', function () {
     return view('partials/block');
 });
 
+
+Route::get('/session', function () {
+    // Session::forget('cart');
+    dd(session()->has('cart'));
+});
+
+
+
+Route::get('/add-to-cart/{id}', [
+    'uses'=>'ProductsController@getAddToCart',
+    'as'=>'product.addToCart'
+]);
+
+Route::get('/shopping-cart', [
+    'uses'=>'ProductsController@getCart',
+    'as'=>'product.shoppingCart'
+]);
+
+Route::get('/remove/{id}', [
+    'uses'=>'ProductsController@getRemoveItem',
+    'as'=>'product.remove'
+]);
+
 Route::get('/goals', 'SiteController@goals');
 Route::get('/mission', 'SiteController@mission');
 Route::get('/vision', 'SiteController@vision');

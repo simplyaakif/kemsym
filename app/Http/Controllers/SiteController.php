@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Products;
 class SiteController extends Controller
 {
     //
@@ -28,8 +28,9 @@ class SiteController extends Controller
         return view('pages/contact')->with('title', $title);
     }
     public function subs(){
+        $products = Products::all();
         $title = 'Subscriptions';
-        return view('pages/subs')->with('title', $title);
+        return view('pages/subs')->with('title', $title)->with('products',$products);
     }
     public function statement(){
         $title = 'Bold Statement';

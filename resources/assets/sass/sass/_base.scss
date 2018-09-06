@@ -374,3 +374,19 @@ input{
     font-size: 2.8rem;
     font-weight: 700;
 }
+
+.product{
+    padding: 2rem 0rem;
+    h3{
+        font-weight: 700;
+        font-size: 2.2rem;
+        margin-top: 1rem;
+    }
+    .price{
+        font-size: 2rem;
+        margin-bottom: 0rem;
+    }
+    .product_description{
+        font-size: 1.4rem;
+    }
+}
