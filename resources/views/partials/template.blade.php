@@ -45,14 +45,7 @@
                                 <li class="nav-item">
                                   <a class="nav-link" href="{!! url('/contact'); !!}">Contact us</a>
                                 </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('product.shoppingCart')}}">
-                                      <i class="fas fa-shopping-cart"></i>
-                                      <span class="badge">
-                                          {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
-                                      </span>
-                                    </a>
-                                </li>
+                                
                                 @guest
                                 <li class="nav-item">
                                   <a class="nav-link btn bk-o" href="{!! url('/login'); !!}"> <i class="fas fa-user"></i> Login/Sign up</a>
@@ -85,6 +78,15 @@
                                         </div>
                                     </li>
                                 @endguest
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('product.shoppingCart')}}">
+                                        {{-- <i class="fas fa-shopping-cart"></i> --}}
+                                        <img class="cart" src="{{asset ('img/cart.png')}}" alt="" srcset="">
+                                        <span class="cart-badge ">
+                                            {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
+                                        </span>
+                                      </a>
+                                  </li>
                               </ul>
                             </div>
                     </nav>

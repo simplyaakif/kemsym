@@ -22,6 +22,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('contact-form', require('./components/ContactForm.vue'));
 Vue.component('contact-section', require('./components/ContactSection.vue'));
 Vue.component('users-section', require('./components/UsersSection.vue'));
+Vue.component('products', require('./components/Products.vue'));
+Vue.component('products-section', require('./components/ProductsSection.vue'));
 const app = new Vue({
     el: '#app'
 });

@@ -1,3 +1,6 @@
+
+$cl_pm : #0a639d;
+
 .btn-tra{
     background: transparent;
     border:0;
@@ -5,4 +8,18 @@
 
 .admin-home{
     margin-top:2rem;
+}
+
+
+.table-mid{
+    td{
+        vertical-align: middle!important;
+    }
+}
+
+.btn-pr{
+    background-color: $cl_pm;
+}
+.dataTables_wrapper{
+    width: 100%!important;
 }

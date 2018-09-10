@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-mid">
                             <thead>
                                 <tr>
                                     <th scope="col"> </th>
@@ -39,12 +39,12 @@
                                     @foreach($products as $product)
                                 <tr>
                                     <td><img width="60" class="img-fluid" src="{{$product['item']['img_path']}}" /> </td>
-                                    <td>{{$product['item']['product_name']}}</td>
+                                    <td class="my-auto">{{$product['item']['product_name']}}</td>
                                     {{-- <td><input class="form-control" type="text" value="{{$product['qty']}}" /></td> --}}
                                     <td class="text-right">{{$product['qty']}}</td>
                                     <td class="text-right">${{$product['item']['price']}}</td>
                                     <td class="text-right">${{$product['price']}}</td>
-                                    <td class="text-right"><button class="btn btn-sm btn-danger">
+                                    <td class="text-center"><button class="btn btn-sm btn-danger">
                                         <a style="color:inherit" href="{{route('product.remove',['id'=>$product['item']['id']])}}">
                                             <i class="fa fa-trash"></i>
                                         </a>

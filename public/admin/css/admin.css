@@ -6,3 +6,15 @@
 .admin-home {
   margin-top: 2rem;
 }
+
+.table-mid td {
+  vertical-align: middle !important;
+}
+
+.btn-pr {
+  background-color: #0a639d;
+}
+
+.dataTables_wrapper {
+  width: 100% !important;
+}

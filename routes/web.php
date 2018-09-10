@@ -29,6 +29,11 @@ Route::get('/add-to-cart/{id}', [
     'as'=>'product.addToCart'
 ]);
 
+Route::get('/add-to-carts/{id,quantity}', [
+    'uses'=>'ProductsController@getAddToCarts',
+    'as'=>'product.addToCarts'
+]);
+
 Route::get('/shopping-cart', [
     'uses'=>'ProductsController@getCart',
     'as'=>'product.shoppingCart'
@@ -70,3 +75,22 @@ Route::get('/admin/contact','AdminController@contact');
 Route::get('/admin/users','AdminController@users');
 Route::get('/admin/subscription','AdminController@subscription');
 Route::get('/admin/profile','AdminController@profile');
+Route::get('/admin/products','AdminController@products');
+
+
+
+
+//Shopping Cart Routes
+Route::get('/product/{id}', [
+    'uses'=>'ProductsController@singleProduct',
+    'as'=>'product.singleProduct'
+    ]);
+    
+    
+
+//Products API
+Route::get('/api/products', 'ProductsController@index');
+Route::get('/api/products/{product}','ProductsController@show');
+Route::post('/api/products', 'ProductsController@store');
+Route::put('/api/products', 'ProductsController@store');
+Route::delete('/api/products/{product}', 'ProductsController@destroy');

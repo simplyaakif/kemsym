@@ -23,10 +23,13 @@
     <link href="admin/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="admin/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
     <!-- Main styles for this application-->
     <link href="admin/css/style.css" rel="stylesheet">
     <link href="admin/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{URL::asset('admin/css/admin.css')}}">
+    @yield('css')
+
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <header class="app-header navbar">
@@ -113,6 +116,13 @@
                 <i class="nav-icon icon-envelope"></i> Contact Forms
               </a>
             </li>
+
+            <li class="nav-title">Products</li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('admin/products')}}">
+                <i class="nav-icon icon-layers"></i> Products</a>
+            </li>
+
             <li class="nav-title">Users Managment</li>
             <li class="nav-item">
               <a class="nav-link" href="{{url('admin/profile')}}">
@@ -166,7 +176,9 @@
     {{--  <script src="admin/vendors/pace-progress/js/pace.min.js"></script>  --}}
     <script src="admin/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
     <script src="admin/vendors/@coreui/coreui/js/coreui.min.js"></script>
-
+    
     <script src="{{URL::asset('js/app.js')}}"></script>
+    @yield('scripts')
+
   </body>
 </html>

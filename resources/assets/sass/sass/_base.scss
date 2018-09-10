@@ -369,6 +369,9 @@ input{
 .af-c{
     @extend %after-center;
 }
+.af-l{
+    @extend %after-left-bl;
+}
 
 .h5{
     font-size: 2.8rem;
@@ -389,4 +392,46 @@ input{
     .product_description{
         font-size: 1.4rem;
     }
+}
+
+.btn-pr{
+    background-color: $cl_pm;
+    color:#fff!important;
+    padding:1rem 3rem;
+    margin:3rem 0rem;
+    display: inline-block;
+    &:hover{
+        text-decoration: none;
+    }
+
+}
+
+.table-mid{
+    td{
+        vertical-align: middle!important;
+    }
+}
+
+.d-block{
+    display: inline-block;
+}
+
+.cart{
+    width:40px;
+    position: relative;
+    bottom: 10px;
+}
+
+.cart-badge{
+    background-color: $cl_pm;
+    color: #fff;
+    width:24px;
+    height: 24px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 300px;
+    position: relative;
+    right:20px;
+    bottom: 30px;
+    font-size: 1.4rem;
 }

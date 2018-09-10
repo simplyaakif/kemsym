@@ -9,7 +9,7 @@
             </div>
             <div class="form-group">
                 <input type="" class="form-control" placeholder="Website" v-model="contact.contact_web" >
-            </div>
+            </div> 
             <div class="form-group">
                 <textarea rows="10" class="form-control" placeholder="Your Message" v-model="contact.contact_message"  ></textarea>
             </div>

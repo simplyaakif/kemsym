@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::orderBy('id', 'desc')->paginate(30);
+        $contacts = Contact::orderBy('id', 'desc')->paginate(0);
         return ContactResource::collection($contacts);
     }
     public function show(Contact $contact)

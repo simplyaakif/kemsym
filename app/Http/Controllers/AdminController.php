@@ -25,4 +25,7 @@ class AdminController extends Controller
     public function profile(){
         return view('admin/pages/profile');
     }
+    public function products(){
+        return view('admin/pages/products');
+    }
 }
