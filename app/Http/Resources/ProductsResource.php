@@ -20,11 +20,11 @@ class ProductsResource extends JsonResource
             'product_subHeading' => $this->product_subHeading,
             'product_description' => $this->product_description,
             'img_path' => $this->img_path,
-            'price'=> [
-                // 'type' => $this->price()->product_pricetype,
-                'value' => $this->productprice->product_price,
+            'price'=> $this->productprice,
+            //     // 'type' => $this->price()->product_pricetype,
+            //     'value' => $this->productprice->product_price,
                 
-            ],
+            // ],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

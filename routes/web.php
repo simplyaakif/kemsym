@@ -56,17 +56,17 @@ Route::get('/visitor/dashboard', 'SiteController@visitor');
 Auth::routes();
 
 //Contact Section
-Route::get('/api/contacts', 'ContactController@index');
-Route::get('/api/contacts/{contact}','ContactController@show');
-Route::post('/api/contacts', 'ContactController@store');
-Route::put('/api/contacts', 'ContactController@store');
-Route::delete('/api/contacts/{contact}', 'ContactController@destroy');
+Route::get('/kemmet/api/contacts', 'ContactController@index');
+Route::get('/kemmet/api/contacts/{contact}','ContactController@show');
+Route::post('/kemmet/api/contacts', 'ContactController@store');
+Route::put('/kemmet/api/contacts', 'ContactController@store');
+Route::delete('/kemmet/api/contacts/{contact}', 'ContactController@destroy');
 //Users Section
-Route::get('/api/users', 'UsersController@index');
-Route::get('/api/users/{user}','UsersController@show');
-Route::post('/api/users', 'UsersController@store');
-Route::put('/api/users', 'UsersController@store');
-Route::delete('/api/users/{user}', 'UsersController@destroy');
+Route::get('/kemmet/api/users', 'UsersController@index');
+Route::get('/kemmet/api/users/{user}','UsersController@show');
+Route::post('/kemmet/api/users', 'UsersController@store');
+Route::put('/kemmet/api/users', 'UsersController@store');
+Route::delete('/kemmet/api/users/{user}', 'UsersController@destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -89,8 +89,9 @@ Route::get('/product/{id}', [
     
 
 //Products API
-Route::get('/api/products', 'ProductsController@index');
-Route::get('/api/products/{product}','ProductsController@show');
-Route::post('/api/products', 'ProductsController@store');
-Route::put('/api/products', 'ProductsController@store');
-Route::delete('/api/products/{product}', 'ProductsController@destroy');
+Route::get('/kemmet/api/products', 'ProductsController@index');
+Route::post('/kemmet/api/products/image', 'ProductsController@imgupload');
+Route::get('/kemmet/api/products/{product}','ProductsController@show');
+Route::post('/kemmet/api/products', 'ProductsController@store');
+Route::put('/kemmet/api/products', 'ProductsController@store');
+Route::delete('/kemmet/api/products/{product}', 'ProductsController@destroy');

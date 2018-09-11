@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Products;
 use App\Cart;
 use Illuminate\Http\Request;
+use App\ProductsPrice;
 use Session;
 use App\Http\Resources\ProductsResource;
 class ProductsController extends Controller
@@ -22,27 +23,47 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
+        $product_data = $request->json()->all(); 
+        $prices = $product_data['price'];
+        // dd($product_data['price']);
+
         $product = $request->isMethod('put') ? Products::findOrFail($request->id) : new Products;
         $product->id = $request->input('id');
         $product->product_name = $request->input('product_name');
-        $product->product_web = $request->input('product_web');
-        $product->product_email = $request->input('product_email');
-        $product->product_message = $request->input('product_message');
-        
+        $product->product_subHeading = $request->input('product_subHeading');
+        $product->product_description = $request->input('product_description');
+
         if($product->save()){
-            return new ProductsResource($contact);
+            
+            foreach($prices as $price){
+                
+                $productprice = new ProductsPrice;
+                $productprice->product_id = $product->id;
+                $productprice->product_pricetype = $price['product_pricetype'];
+                $productprice->product_price = $price['product_price'];
+                $productprice->save();
+            }
+            return new ProductsResource($product);
         }
     }
+    
     public function show(Products $product)
     {
         $products = Products::findOrFail($product->id);
         return new ProductsResource($products);
     }
+
     public function destroy(Products $product)
     {
-        $products = Contact::findOrFail($product->id);
+        $products = Products::findOrFail($product->id);
+        $productstype = ProductsPrice::where('product_id',$product->id)->get();
+
+        foreach ($productstype as $producttype){
+            $producttype->delete();
+        }
+
         if ($products->delete()){
-            return new ContactResource($products);
+            return new ProductsResource($products);
         }
     }
 
@@ -91,6 +112,26 @@ class ProductsController extends Controller
         $product = Products::find($id);
         $title = $product->product_name;
         return view('pages.single')->with('product',$product)->with('title',$title);
+    }
+
+    public function imgupload(Request $request)
+
+    {
+        $image = $request->file('file');
+        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        
+        // echo $input['imagename'];
+        
+        $destinationPath = public_path('/images');
+        
+        // echo $destinationPath.$input['imagename'];
+        
+        $image->move($destinationPath, $input['imagename']);
+        
+        // dd($destinationPath);
+
+        return $input['imagename'];
+
     }
 
 

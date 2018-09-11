@@ -83,7 +83,7 @@
                                         {{-- <i class="fas fa-shopping-cart"></i> --}}
                                         <img class="cart" src="{{asset ('img/cart.png')}}" alt="" srcset="">
                                         <span class="cart-badge ">
-                                            {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
+                                            {{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}
                                         </span>
                                       </a>
                                   </li>
