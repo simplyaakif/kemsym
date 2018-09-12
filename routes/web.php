@@ -16,10 +16,14 @@ Route::get('/', function () {
     return view('partials/block');
 });
 
+Route::get('/wip', function () {
+    return view('pages/wip');
+});
+
 
 Route::get('/session', function () {
-    // Session::forget('cart');
-    dd(session()->has('cart'));
+    Session::forget('cart');
+    // dd(session()->has('cart'));
 });
 
 
@@ -29,7 +33,7 @@ Route::get('/add-to-cart/{id}', [
     'as'=>'product.addToCart'
 ]);
 
-Route::get('/add-to-carts/{id}/price/{price_id}', [
+Route::get('/add-to-carts/{id}/{price_id}', [
     'uses'=>'ProductsController@getAddToCarts',
     'as'=>'product.addToCarts'
 ]);

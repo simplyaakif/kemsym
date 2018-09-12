@@ -15,6 +15,7 @@
     <div class="page-details">
           
             <fe-product
+            :siteurl="'{{@url('/')}}'"
             :product="{{$product}}"
             :productprice="{{$product->productprice}}"
             :productpricemax="{{$product->productprice->max('product_price')}}"

@@ -39,10 +39,10 @@
                                     @foreach($products as $product)
                                 <tr>
                                     <td><img width="60" class="img-fluid" src="{{$product['item']['img_path']}}" /> </td>
-                                    <td class="my-auto">{{$product['item']['product_name']}}</td>
+                                    <td class="my-auto">{{$product['item']['product_name']}} - {{$product['pricetype']}}</td>
                                     {{-- <td><input class="form-control" type="text" value="{{$product['qty']}}" /></td> --}}
                                     <td class="text-right">{{$product['qty']}}</td>
-                                    <td class="text-right">${{$product['item']['price']}}</td>
+                                    <td class="text-right">${{$product['singleprice']}}</td>
                                     <td class="text-right">${{$product['price']}}</td>
                                     <td class="text-center"><button class="btn btn-sm btn-danger">
                                         <a style="color:inherit" href="{{route('product.remove',['id'=>$product['item']['id']])}}">
@@ -67,10 +67,10 @@
                 <div class="col mb-2">
                     <div class="row">
                         <div class="col-sm-12  col-md-3 offset-md-6">
-                            <button class="btn btn-block btn-dark">Continue Shopping</button>
+                            <a href="{{url('/subs')}}" class="btn btn-block btn-dark">Continue Shopping</a>
                         </div>
                         <div class="col-sm-12 col-md-3 text-right">
-                            <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                            <a href="{{url('/wip')}}"  class="btn btn-lg btn-block btn-success text-uppercase">Checkout</a>
                         </div>
                     </div>
                 </div>

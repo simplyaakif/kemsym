@@ -17,18 +17,18 @@ class Cart
         }
     }
 
-    public function addpro($item,$id){
-        $storedItem = ['qty'=>0,'price'=>$item->price,'item'=>$item];
+    public function addpro($item,$id,$price,$pricetype){
+        $storedItem = ['qty'=>0,'price'=>$price,'singleprice'=>$price,'item'=>$item,'pricetype'=>$pricetype];
         if($this->items){
             if(array_key_exists($id, $this->items)){
                 $storedItem = $this->items[$id];
             }
         }
         $storedItem['qty']++;
-        $storedItem['price']= $item->price * $storedItem['qty'];
+        $storedItem['price']= $price * $storedItem['qty'];
         $this->items[$id]=$storedItem;
         $this->totalQty++;
-        $this->totalPrice += $item->price;
+        $this->totalPrice += $price;
     }
 
     public function add($item,$id){

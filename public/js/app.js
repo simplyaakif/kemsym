@@ -20242,20 +20242,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             selected: '',
-            url: window.location.hostname
+            url: window.location.hostname,
+            price: {
+                value: '',
+                id: ''
+            }
         };
     },
 
     props: {
-        product: Array,
+        product: Object,
         productprice: Array,
         productpricemax: Number,
-        productpricemin: Number
+        productpricemin: Number,
+        siteurl: String
     },
     watch: {},
-    computed: {},
+    computed: {
+        selectedcheck: function selectedcheck() {
+            if (this.productprice[this.selected]) {
 
-    methods: {}
+                return true;
+            } else {
+                return false;
+            }
+        },
+        currentprice: function currentprice() {
+            if (this.selectedcheck) {
+                this.price.value = this.productprice[this.selected].product_price;
+                this.price.id = this.productprice[this.selected].id;
+                console.log(this.price.value);
+                return this.price.value;
+            } else {
+                return 0;
+            }
+        },
+        price_id: function price_id() {
+            return this.price.id;
+        }
+    },
+    mounted: function mounted() {
+        console.log(this);
+        this.myAttribute = this.$el.getAttribute('data-attribute-name');
+    },
+
+
+    methods: {
+        carts: function carts() {}
+    }
 });
 
 /***/ }),
@@ -20272,10 +20306,7 @@ var render = function() {
         _c("div", { staticClass: "col-md-6 text-center" }, [
           _c("img", {
             staticClass: "img-fluid",
-            attrs: {
-              src: "http://" + _vm.url + "/" + _vm.product.img_path,
-              alt: ""
-            }
+            attrs: { src: _vm.siteurl + "/" + _vm.product.img_path, alt: "" }
           })
         ]),
         _vm._v(" "),
@@ -20332,7 +20363,11 @@ var render = function() {
                 _vm._l(_vm.productprice, function(price, n) {
                   return _c(
                     "option",
-                    { key: n, domProps: { value: price.product_price } },
+                    {
+                      key: n,
+                      attrs: { "data-id": price.id },
+                      domProps: { value: n }
+                    },
                     [_vm._v(_vm._s(price.product_pricetype))]
                   )
                 })
@@ -20343,9 +20378,45 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("h1", [_vm._v("$" + _vm._s(_vm.selected))]),
+          _c(
+            "h1",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.selectedcheck,
+                  expression: "selectedcheck"
+                }
+              ]
+            },
+            [_vm._v("$" + _vm._s(_vm.currentprice))]
+          ),
           _vm._v(" "),
-          _c("a", { staticClass: "btn-pr" }, [_vm._v("Add to Cart")])
+          _c(
+            "a",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.selectedcheck,
+                  expression: "selectedcheck"
+                }
+              ],
+              staticClass: "btn-pr",
+              attrs: {
+                href:
+                  _vm.siteurl +
+                  "/add-to-carts/" +
+                  _vm.product.id +
+                  "/" +
+                  _vm.price_id
+              },
+              on: { click: _vm.carts }
+            },
+            [_vm._v("Add to Cart")]
+          )
         ])
       ]),
       _vm._v(" "),

@@ -3,7 +3,7 @@
         <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <img :src="'http://'+url+'/'+product.img_path" alt="" class="img-fluid">
+                        <img :src="siteurl+'/'+product.img_path" alt="" class="img-fluid">
                     </div>
                     <div class="col-md-6">
                         <h2>{{product.product_name}}</h2>
@@ -11,12 +11,12 @@
                         <div class="form-group">
                           <select class="form-control" v-model="selected" style="height:auto;" name="" id="">
                                 <option disabled selected value="">Select one</option>
-                                    <option v-for="(price,n) in productprice" :key="n" :value="price.product_price">{{price.product_pricetype}}</option>
+                                    <option v-for="(price,n) in productprice" :key="n" :data-id="price.id" :value="n">{{price.product_pricetype}}</option>
                             </select>
                         </div>
                         <br>
-                            <h1>${{selected}}</h1>
-                        <a class="btn-pr">Add to Cart</a>
+                            <h1 v-show="selectedcheck">${{currentprice}}</h1>
+                        <a :href="siteurl+'/add-to-carts/'+product.id+'/'+price_id" v-show="selectedcheck" @click="carts" class="btn-pr">Add to Cart</a>
                     </div>
                 </div>
                 <div class="row">
@@ -37,23 +37,56 @@
         return{
             selected:'',
             url:window.location.hostname,
+            price:{
+                value:'',
+                id:''  ,
+            },
         }
     },
     props:{
-        product:Array,
+        product:Object,
         productprice:Array,
         productpricemax:Number,
         productpricemin:Number,
+        siteurl:String,
     },
     watch:{
        
     },
     computed:{
-        
+        selectedcheck(){
+            if(this.productprice[this.selected]){
+
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        currentprice(){
+            if(this.selectedcheck){
+            this.price.value = this.productprice[this.selected].product_price;
+            this.price.id = this.productprice[this.selected].id;
+            console.log(this.price.value);
+            return this.price.value;
+            }
+            else{
+                return 0;
+            }
+        },
+        price_id(){
+            return this.price.id;
+        }
     },
+    mounted() {
+        console.log(this);
+        this.myAttribute = this.$el.getAttribute('data-attribute-name');
+        },
   
     methods: {
-       
+       carts(){
+
+       }
         }
     }
 </script>
