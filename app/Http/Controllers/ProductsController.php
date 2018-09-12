@@ -32,6 +32,7 @@ class ProductsController extends Controller
         $product->product_name = $request->input('product_name');
         $product->product_subHeading = $request->input('product_subHeading');
         $product->product_description = $request->input('product_description');
+        $product->img_path = $request->input('img_path');
 
         if($product->save()){
             
@@ -81,6 +82,24 @@ class ProductsController extends Controller
         // dd($request->session()->get('cart'));
         return back();
     }
+
+
+    public function getAddToCarts(Request $request, $id, $price_id){
+        $product = Products::find($id);
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+
+        $cart->addpro($product,$product->id,$price);
+
+        $request->session()->put('cart',$cart);
+        // dd($request->session()->get('cart'));
+        return back();
+    }
+
+
+
+
+
     public function getCart(){
         $title = 'Shopping Cart';
         if(!Session::has('cart')){

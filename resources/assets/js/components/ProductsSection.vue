@@ -30,15 +30,12 @@
 
                         <div v-if="edit">
                             <img :src="product.img_path" alt="" srcset="">
-                        </div>
-                        <div v-else>
                             <div class="form-group">
                                 <ul>
                                     <li v-for="(file, index) in file" :key="file.id">
                                     <span>{{index}}</span> -
                                     <span>{{file.name}}</span> -
                                     <span>{{file.size}}</span> -
-                                    <!-- <input type="text" :value="file.response" v-model="product.img_path"> -->
                                     <span>{{file.response}}</span> -
                                     <span v-if="file.error">{{file.error}}</span>
                                     <span v-else-if="file.success">success</span>
@@ -51,7 +48,7 @@
                                     </li>
                                 </ul>
                                 <file-upload
-                                    class="btn btn-primary"
+                                    class="btn btn-primary mg-b-0"
                                     post-action="/kemmet/api/products/image"
                                     extensions="gif,jpg,jpeg,png,webp"
                                     accept="image/png,image/gif,image/jpeg,image/webp"
@@ -73,7 +70,50 @@
                                 Stop Upload
                                 </button>
                                
-                                <input type="file"  class="form-control" placeholder="Product Image">
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div class="form-group">
+                                <ul>
+                                    <li v-for="(file, index) in file" :key="file.id">
+                                    <span>{{index}}</span> -
+                                    <span>{{file.name}}</span> -
+                                    <span>{{file.size}}</span> -
+                                    <!-- <input type="text" :value="file.response" v-model="product.img_path"> -->
+                                    <span>{{file.response}}</span> -
+                                    <span v-if="file.error">{{file.error}}</span>
+                                    <span v-else-if="file.success">success</span>
+                                    <span v-else-if="file.active">active</span>
+                                    <span v-else-if="file.active">active</span>
+                                    <span v-else></span>
+                                    <div v-if="file.success">
+                                        <img :src="'images/'+file.response" alt="" srcset="">
+                                    </div>
+                                    </li>
+                                </ul>
+                                <file-upload
+                                    class="btn btn-primary mg-b-0"
+                                    post-action="/kemmet/api/products/image"
+                                    extensions="gif,jpg,jpeg,png,webp"
+                                    accept="image/png,image/gif,image/jpeg,image/webp"
+                                    :multiple="false"
+                                    :size="1024 * 1024"
+                                    v-model="file"
+                                    @input-filter="inputFilter"
+                                    @input-file="inputFile"
+                                    ref="upload">
+                                    <i class="fa fa-plus"></i>
+                                    Select files
+                                </file-upload>
+                                <button type="button" class="btn btn-success" v-if="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true">
+                                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                                Start Upload
+                                </button>
+                                <button type="button" class="btn btn-danger"  v-else @click.prevent="$refs.upload.active = false">
+                                <i class="fa fa-stop" aria-hidden="true"></i>
+                                Stop Upload
+                                </button>
+                               
                             </div>
                         </div>
                         <div class="form-group">
@@ -220,6 +260,7 @@
             },
             product_id:'',
             search:'',
+            fileadd:'',
             pagination: {},
             flag: false,
             edit: false,
@@ -229,8 +270,13 @@
         };
     },
     watch:{
-        filename(){
-            this.product.img_path = this.file['0'].response;
+        file:{
+           handler(val){
+            // console.log('Val Changed');
+            this.product.img_path = 'images/'+this.file[0].response;
+            // console.log(this.product.img_path);
+            },
+            deep: true
         }
     },
     computed:{
@@ -239,7 +285,6 @@
                 return product.product_name.match(new RegExp(this.search, "i")) 
             });
         }
-
     },
     created() {
     this.fetchData();
@@ -321,6 +366,9 @@
         },
         addproduct() {
             
+
+        if(this.product.img_path && this.product.product_name && this.product.product_subHeading && this.product.product_description){
+
             if (this.edit === false) {
                 // Add
                 fetch('/kemmet/api/products', {
@@ -364,6 +412,13 @@
             .catch(err => console.log(err));
         }
         this.editMode = false;
+        
+        }
+
+        else{
+            this.$toaster.success('Either Image or Somefield missing', {timeout: 3000})
+        }
+
         },
         editproduct(product) {
         this.editMode = true;

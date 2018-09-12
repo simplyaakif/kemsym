@@ -82,7 +82,7 @@
                                         <a class="nav-link" href="{{ route('product.shoppingCart')}}">
                                             {{-- <i class="fas fa-shopping-cart"></i> --}}
                                             <img class="cart" src="{{asset ('img/cart.png')}}" alt="" srcset="">
-                                            <span class="badge">
+                                            <span class="cart-badge">
                                                 {{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}
                                             </span>
                                           </a>

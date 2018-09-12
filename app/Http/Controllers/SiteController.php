@@ -29,6 +29,8 @@ class SiteController extends Controller
     }
     public function subs(){
         $products = Products::all();
+        
+
         $title = 'Subscriptions';
         return view('pages/subs')->with('title', $title)->with('products',$products);
     }

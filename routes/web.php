@@ -29,7 +29,7 @@ Route::get('/add-to-cart/{id}', [
     'as'=>'product.addToCart'
 ]);
 
-Route::get('/add-to-carts/{id,quantity}', [
+Route::get('/add-to-carts/{id}/price/{price_id}', [
     'uses'=>'ProductsController@getAddToCarts',
     'as'=>'product.addToCarts'
 ]);

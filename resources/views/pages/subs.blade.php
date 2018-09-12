@@ -24,10 +24,10 @@
                             <div class="col-md-4">
                                 <div class="text-center product">
                                     <img src="{{asset($product->img_path)}}" alt="" class="img-fluid">
-                                    <h3>{{$product->product_name}}</h3>
-                                    <p class="price">${{$product->price}}</p>
+                                    <h3 class="h3-product">{{$product->product_name}}</h3>
+                                    <p class="h3-price">${{$product->productprice->min('product_price')}} - ${{$product->productprice->max('product_price')}}</p>
                                     <p class="product_description">{{$product->product_subHeading}}</p>
-                                    <a href="{{route('product.singleProduct',['id'=>$product->id])}}">Select Options</a>
+                                    <a class="btn-price" href="{{route('product.singleProduct',['id'=>$product->id])}}">Select Options</a>
                                 </div>
                             </div>
                             @endforeach

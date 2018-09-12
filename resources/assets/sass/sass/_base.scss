@@ -435,3 +435,32 @@ input{
     bottom: 30px;
     font-size: 1.4rem;
 }
+
+.h3-product{
+    font-size: 1.6rem!important;
+}
+
+.h3-price{
+    font-size: 1.4rem!important;
+}
+
+.btn-price{
+    background-color: #04253a;
+    color:#fff!important;
+    padding:1rem 3rem;
+    bottom:12rem;
+    position: absolute;
+    text-decoration: none;
+    transform:translateX(-50%);
+    display: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.product:hover{
+    .btn-price{
+        display: inline-block;
+        transition: all 1s;
+    }
+}
