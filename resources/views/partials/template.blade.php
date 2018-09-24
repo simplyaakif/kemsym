@@ -150,9 +150,9 @@
                     </div>
                     <div class="col-md-6">
                         <ul class="text-right list-inline">
-                            <li class="list-inline-item"><a href="facebook.com"><i class="fab fa-facebook-square"></i></a></li>
-                            <li class="list-inline-item"><a href="twitter.com"><i class="fab fa-twitter-square"></i></a></li>
-                            <li class="list-inline-item"><a href="instagram.com"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.facebook.com/bansong"><i class="fab fa-facebook-square"></i></a></li>
+                            <li class="list-inline-item"><a href="https://twitter.com/KemmetSystems?s=09"><i class="fab fa-twitter-square"></i></a></li>
+                            <li class="list-inline-item"><a href="https://instagram.com/kemmetsystems1?utm_source=ig_profile_share&igshid=187jytufoe00u"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

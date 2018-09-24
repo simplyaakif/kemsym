@@ -10,6 +10,7 @@ window.Vue = require('vue');
 import VueResource from 'vue-resource';
 import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
+import VShowSlide from 'v-show-slide'
 
 const VueUploadComponent = require('vue-upload-component');
 Vue.component('file-upload', VueUploadComponent);
@@ -20,6 +21,7 @@ Vue.component('file-upload', VueUploadComponent);
  */
 Vue.use(VueResource);
 Vue.use(Toaster, {timeout: 5000});
+Vue.use(VShowSlide);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('contact-form', require('./components/ContactForm.vue'));

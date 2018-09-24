@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/paywithcard', 'PaypalPaymentController@paywithCreditCard');
+Route::get('/paywithpaypal', 'PaypalPaymentController@paywithPaypal');
+
 
 Route::get('/', function () {
     return view('partials/block');
@@ -22,10 +25,15 @@ Route::get('/wip', function () {
 
 
 Route::get('/session', function () {
-    Session::forget('cart');
-    // dd(session()->has('cart'));
+    // Session::forget('cart');
+    dd(session()->get('cart'));
 });
 
+
+Route::get('/checkout', [
+    'uses'=>'ProductsController@checkout',
+    'as'=>'product.checkout'
+]);
 
 
 Route::get('/add-to-cart/{id}', [
@@ -80,8 +88,6 @@ Route::get('/admin/users','AdminController@users');
 Route::get('/admin/subscription','AdminController@subscription');
 Route::get('/admin/profile','AdminController@profile');
 Route::get('/admin/products','AdminController@products');
-
-
 
 
 //Shopping Cart Routes

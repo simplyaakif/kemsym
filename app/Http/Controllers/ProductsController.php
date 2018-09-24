@@ -155,7 +155,10 @@ class ProductsController extends Controller
 
     }
 
-
+    public function checkout(){
+        $title='Checkout';
+        return view('pages.checkout')->with('title',$title);
+    }
 
 
 }

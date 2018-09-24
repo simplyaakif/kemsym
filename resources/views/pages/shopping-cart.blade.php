@@ -70,7 +70,7 @@
                             <a href="{{url('/subs')}}" class="btn btn-block btn-dark">Continue Shopping</a>
                         </div>
                         <div class="col-sm-12 col-md-3 text-right">
-                            <a href="{{url('/wip')}}"  class="btn btn-lg btn-block btn-success text-uppercase">Checkout</a>
+                            <a href="{{route('product.checkout')}}"  class="btn btn-lg btn-block btn-success text-uppercase">Checkout</a>
                         </div>
                     </div>
                 </div>
