@@ -15,6 +15,19 @@ Route::get('/paywithcard', 'PaypalPaymentController@paywithCreditCard');
 Route::get('/paywithpaypal', 'PaypalPaymentController@paywithPaypal');
 
 
+Route::post('/paypalpaymentshow/{payment_id}', 'PaypalPaymentController@show');
+
+
+Route::get('/paypalpayments', 'PaypalPaymentController@index');
+
+
+Route::get('/payments/success', 'ProductsController@paymentApproved');
+
+Route::post('pays/paywithpaypallive', 'PaypalPaymentController@paywithPaypal_live');
+
+
+
+
 Route::get('/', function () {
     return view('partials/block');
 });

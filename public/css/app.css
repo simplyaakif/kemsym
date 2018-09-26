@@ -2,7 +2,7 @@ html {
   font-size: 10px;
 }
 
-body {
+body, input, label, form, span {
   font-size: 1.8rem;
   font-family: 'Open Sans', sans-serif;
 }
@@ -427,6 +427,11 @@ body {
 
 input {
   padding: 1.2rem !important;
+}
+
+select {
+  padding: 1.05rem !important;
+  height: auto !important;
 }
 
 .contactform {

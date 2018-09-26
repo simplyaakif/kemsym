@@ -23,6 +23,8 @@
         "v-show-slide": "^1.6.0",
         "v-toaster": "^1.0.3",
         "vue-resource": "^1.5.1",
+        "vue-session": "^1.0.0",
+        "vue-sweetalert2": "^1.5.3",
         "vue-upload-component": "^2.8.11"
     }
 }

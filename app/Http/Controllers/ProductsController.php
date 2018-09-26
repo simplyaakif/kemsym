@@ -156,8 +156,29 @@ class ProductsController extends Controller
     }
 
     public function checkout(){
+
         $title='Checkout';
-        return view('pages.checkout')->with('title',$title);
+        
+        if(!Session::has('cart')){
+            $title='Cart';
+            return view('pages.shopping-cart',['products'=>null,'title'=>$title]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart ($oldCart);
+        // dd($cart);
+
+        // return $cart->items;
+        return view('pages.checkout',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'title'=>$title]);
+
+
+        
+    }
+
+    public function paymentApproved(){
+        $title='Order Recieved';
+        Session::forget('cart');
+        return view('pages.order',['title'=>$title]);
+
     }
 
 

@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 
 class PaypalPaymentController extends Controller
 {
+    public function index()
+    {
+
+        $payments = Paypalpayment::getAll(['count' => 10, 'start_index' => 0], Paypalpayment::apiContext());
+        
+        return response()->json([$payments->toArray()], 200);
+
+    }
+    public function show($payment_id)
+    {
+       $payment = Paypalpayment::getById($payment_id, Paypalpayment::apiContext());
+        
+        return response()->json([$payment->toArray()], 200);
+    }
     public function paywithCreditCard()
     {
         // ### Address
@@ -118,6 +132,8 @@ class PaypalPaymentController extends Controller
         return response()->json([$payment->toArray()], 200);
     }
      
+
+
     public function paywithPaypal()
     {
         // ### Address
@@ -173,6 +189,116 @@ class PaypalPaymentController extends Controller
         $amount->setCurrency("USD")
                 // the total is $17.8 = (16 + 0.6) * 1 ( of quantity) + 1.2 ( of Shipping).
                 ->setTotal("20")
+                ->setDetails($details);
+
+        // ### Transaction
+        // A transaction defines the contract of a
+        // payment - what is the payment for and who
+        // is fulfilling it. Transaction is created with
+        // a `Payee` and `Amount` types
+
+        $transaction = Paypalpayment::transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment description")
+            ->setInvoiceNumber(uniqid());
+
+        // ### Payment
+        // A Payment Resource; create one using
+        // the above types and intent as 'sale'
+
+        $redirectUrls = Paypalpayment::redirectUrls();
+        $redirectUrls->setReturnUrl(url("/payments/success"))
+            ->setCancelUrl(url("/payments/fails"));
+
+        $payment = Paypalpayment::payment();
+
+        $payment->setIntent("sale")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions([$transaction]);
+
+        try {
+            // ### Create Payment
+            // Create a payment by posting to the APIService
+            // using a valid ApiContext
+            // The return object contains the status;
+            $payment->create(Paypalpayment::apiContext());
+        } catch (\PPConnectionException $ex) {
+            return response()->json(["error" => $ex->getMessage()], 400);
+        }
+
+        return response()->json([$payment->toArray(), 'approval_url' => $payment->getApprovalLink()], 200);
+    }
+
+
+    public function paywithPaypal_live(Request $request)
+    {
+        $product_data = $request->json()->all();
+        // echo $item['price'];
+        // return $product_data;
+        $inc=0;
+
+        $order = array();
+        
+        foreach($product_data as $item){
+            // return $item;
+            $order[$inc] = Paypalpayment::item();
+            $order[$inc]->setName($item['item']['product_name'])
+                        ->setDescription($item['pricetype'])
+                        ->setCurrency('USD')
+                        ->setQuantity($item['qty'])
+                        ->setTax(0)
+                        ->setPrice($item['price']);
+            $inc++;
+        }
+        
+        // return $order[1];
+
+        // ### Address
+        // Base Address object used as shipping or billing
+        // address in a payment. [Optional]
+        
+        $shippingAddress= Paypalpayment::shippingAddress();
+        $shippingAddress->setLine1("lorem ipsum dolor seit")
+            ->setLine2("Niagara Falls")
+            ->setCity("Los Angeles")
+            ->setState("CA")
+            ->setPostalCode("90001")
+            ->setCountryCode("US")
+            ->setPhone("716-298-1822")
+            ->setRecipientName("Lorem Ipsum");
+
+        // ### Payer
+        // A resource representing a Payer that funds a payment
+        // Use the List of `FundingInstrument` and the Payment Method
+        // as 'credit_card'
+
+        $payer = Paypalpayment::payer();
+        $payer->setPaymentMethod("paypal");
+
+        $orderTotal = 0;
+        foreach($order as $orderp){
+            $orderTotal += $orderp->price;
+        }
+
+
+        $itemList = Paypalpayment::itemList();
+        $itemList->setItems($order)
+            ->setShippingAddress($shippingAddress);
+
+
+        $details = Paypalpayment::details();
+        $details->setShipping("0")
+                ->setTax("0")
+                //total of items prices
+                ->setSubtotal($orderTotal);
+
+        //Payment Amount
+        $amount = Paypalpayment::amount();
+        $amount->setCurrency("USD")
+                // the total is $17.8 = (16 + 0.6) * 1 ( of quantity) + 1.2 ( of Shipping).
+                ->setTotal($orderTotal)
                 ->setDetails($details);
 
         // ### Transaction
