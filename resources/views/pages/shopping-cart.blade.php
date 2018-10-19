@@ -44,11 +44,14 @@
                                     <td class="text-right">{{$product['qty']}}</td>
                                     <td class="text-right">${{$product['singleprice']}}</td>
                                     <td class="text-right">${{$product['price']}}</td>
-                                    <td class="text-center"><button class="btn btn-sm btn-danger">
-                                        <a style="color:inherit" href="{{route('product.remove',['id'=>$product['item']['id']])}}">
+                                    <td class="text-center">
+                                    <a class="btn btn-sm btn-danger" 
+                                    style="color:inherit" href="{{route('product.remove',['id'=>$product['item']['id']])}}
+                                    ">
                                             <i class="fa fa-trash"></i>
-                                        </a>
-                                     </button> </td>
+                                    </a>
+
+                                    </td>
                                 </tr>
                                     @endforeach
                                 

@@ -46,4 +46,8 @@ class SiteController extends Controller
         $title = 'Dashboard';
         return view('pages/visitor')->with('title', $title);
     }
+    public function pStructure(){
+        $title = 'Pricing Structure';
+        return view('pages/pricingStructure')->with('title', $title);
+    }
 }

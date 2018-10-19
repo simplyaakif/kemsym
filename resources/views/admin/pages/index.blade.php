@@ -16,13 +16,13 @@
                           <div class="col-sm-2">
                             <div class="callout callout-info">
                               <small class="text-muted">Pending Clients</small><br>
-                              <strong class="h4">9,123</strong>
+                              <strong class="h4">{{ $pending_client_count }}</strong>
                             </div>
                           </div><!--/.col-->
                           <div class="col-sm-2">
                             <div class="callout callout-danger">
-                              <small class="text-muted">Total Clients</small><br>
-                              <strong class="h4">22,643</strong>
+                              <small class="text-muted">Total Client Accounts</small><br>
+                              <strong class="h4">{{ $total_client_count }}</strong>
                             </div>
                           </div><!--/.col-->
                           <div class="col-sm-2">
@@ -37,7 +37,7 @@
                               <strong class="h4">49,123</strong>
                             </div>
                           </div><!--/.col-->
-                          <div class="col-sm-2">
+                          {{--  <div class="col-sm-2">
                             <div class="callout">
                               <small class="text-muted">CTR</small><br>
                               <strong class="h4">23%</strong>
@@ -48,7 +48,7 @@
                               <small class="text-muted">Bounce Rate</small><br>
                               <strong class="h4">5%</strong>
                             </div>
-                          </div><!--/.col-->
+                          </div><!--/.col-->  --}}
                         </div><!--/.row-->
                   </div>
                       

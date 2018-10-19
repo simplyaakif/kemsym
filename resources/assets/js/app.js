@@ -35,6 +35,7 @@ Vue.component('products', require('./components/Products.vue'));
 Vue.component('products-section', require('./components/ProductsSection.vue'));
 Vue.component('fe-product', require('./components/feProduct.vue'));
 Vue.component('fe-checkout', require('./components/Checkout.vue'));
+Vue.component('fe-dashboard', require('./components/UserFE.vue'));
 const app = new Vue({
     el: '#app'
 });

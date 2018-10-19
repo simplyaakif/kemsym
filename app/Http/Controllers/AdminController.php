@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +11,17 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('admin/pages/index');
+        // $users = User::all();
+        $total_client_count = count(
+            User::where('role','visitor')->get()
+        );
+        $pending_client_count = count(
+            User::where('verified','0')->get()
+        );
+        return view('admin/pages/index')
+                    ->with('total_client_count',$total_client_count)
+                    ->with('pending_client_count',$pending_client_count);
+
     }
     public function contact(){
         return view('admin/pages/contact');

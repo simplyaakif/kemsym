@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('/test', function(){
+    $user = Auth::user();
+    $userDetails = $user->userdata;
+    printf($user) ;
+    printf($userDetails) ;
+});
+
 Route::get('/paywithcard', 'PaypalPaymentController@paywithCreditCard');
 Route::get('/paywithpaypal', 'PaypalPaymentController@paywithPaypal');
 
@@ -24,7 +31,7 @@ Route::get('/paypalpayments', 'PaypalPaymentController@index');
 Route::get('/payments/success', 'ProductsController@paymentApproved');
 
 Route::post('pays/paywithpaypallive', 'PaypalPaymentController@paywithPaypal_live');
-
+Route::post('pays/paywithcardlive', 'PaypalPaymentController@paywithCreditCard_live');
 
 
 
@@ -38,7 +45,7 @@ Route::get('/wip', function () {
 
 
 Route::get('/session', function () {
-    // Session::forget('cart');
+    Session::forget('cart');
     dd(session()->get('cart'));
 });
 
@@ -77,6 +84,7 @@ Route::get('/subs', 'SiteController@subs');
 Route::get('/statement', 'SiteController@statement');
 Route::get('/register-pending', 'SiteController@pending');
 Route::get('/visitor/dashboard', 'SiteController@visitor');
+Route::get('/pricing-structure', 'SiteController@pStructure');
 
 Auth::routes();
 

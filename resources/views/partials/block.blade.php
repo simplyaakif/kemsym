@@ -194,7 +194,7 @@
                 <div style="" class="my-auto">
                         <h2>PRICING STRUCTURE</h2>
                         <p>The pricing will be dependent on the problem or issue to be solved. An average price for a minor issue to be solved will be $99.00. A more complex problem will attract a higher cost.</p>
-                        <a href="" class="btn white_o">Read More</a>
+                        <a href="{{ url('/pricing-structure') }}" class="btn white_o">Read More</a>
                 </div>
             </div>
         </div>

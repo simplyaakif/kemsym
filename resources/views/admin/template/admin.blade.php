@@ -135,7 +135,7 @@
             <li class="nav-title">Plans</li>
             <li class="nav-item">
               <a class="nav-link" href="{{url('admin/subscription')}}">
-                <i class="nav-icon icon-pie-chart"></i> Subscriptions</a>
+                <i class="nav-icon icon-pie-chart"></i> Orders</a>
             </li>
 
 

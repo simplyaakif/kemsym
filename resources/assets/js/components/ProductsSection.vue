@@ -192,8 +192,8 @@
                         <tr v-for="(product,n) in filterproducts" :key="product.id">
                             <td>{{n+1}}</td>
                             <td> <img :src="product.img_path" width="30" alt="" srcset=""> </td>
-                            <td>{{product.product_name}}</td>
-                            <td>{{product.product_subHeading}}</td>
+                            <td>{{product.product_name.substring(0,30)+".."}}</td>
+                            <td>{{product.product_subHeading.substring(0,50)+".."}}</td>
                             <td style="font-size:18px;">
                                 <button class="btn-tra" @click="editproduct(product)">
                                     <i class="icon-wrench"></i>
