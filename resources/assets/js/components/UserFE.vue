@@ -15,7 +15,25 @@
                         <h3>Hello  {{userdata.name}}</h3>
                         <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <h2>Your Orders</h2>
+                        <table class="table">
+                            <th>
+                                <td>Sr #</td>
+                                <td>Product Name</td>
+                                <td>Product Quantity</td>
+                                <td>Product Price</td>
+                                <td>Purchase Date</td>
+                            </th>
+                            <tr v-for="(order, index) in userorders" :key="index">
+                                <td> {{ index+1 }} </td>
+                                <td> {{ order.quantity }} </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                        </table>
+                    </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
 
                     <div class="tab-pane fade show active" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
@@ -63,6 +81,7 @@
         props:{
             userdata: Object,
             userdetails: Object,
+            userorders:Array,
         }
     }
 </script>

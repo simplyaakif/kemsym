@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Products;
+use App\Orders;
 use App\Cart;
 use Illuminate\Http\Request;
 use App\ProductsPrice;
@@ -90,16 +92,12 @@ class ProductsController extends Controller
         $oldCart = Session::has('cart')? Session::get('cart'):null;
         $cart = new Cart($oldCart);
 
-        $cart->addpro($product,$price->id,$price->product_price,$price->product_pricetype);
+        $cart->addpro($product,$price->id,$price->product_price,$price->product_pricetype,$price_id);
 
         $request->session()->put('cart',$cart);
         // dd($request->session()->get('cart'));
         return back();
     }
-
-
-
-
 
     public function getCart(){
         $title = 'Shopping Cart';
@@ -170,12 +168,31 @@ class ProductsController extends Controller
         // return $cart->items;
         return view('pages.checkout',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'title'=>$title]);
 
-
+ 
         
     }
 
     public function paymentApproved(){
         $title='Order Recieved';
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart ($oldCart);
+
+        $cartObjects = $cart->items;
+        
+        // dd($cart);
+        
+        foreach($cartObjects as $object){
+            // echo $object['product_prices_id'];
+            $order = new Orders;
+            $order->user_id = Auth::user()->id;
+            $order->products_prices_id = $object['product_prices_id'];
+            $order->quantity = $object['qty'];
+            $order->save();
+        }
+
+
+
         Session::forget('cart');
         return view('pages.order',['title'=>$title]);
 

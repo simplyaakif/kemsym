@@ -53,7 +53,7 @@ Route::get('/session', function () {
 Route::get('/checkout', [
     'uses'=>'ProductsController@checkout',
     'as'=>'product.checkout'
-]);
+])->middleware('auth');
 
 
 Route::get('/add-to-cart/{id}', [

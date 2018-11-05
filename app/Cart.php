@@ -17,8 +17,8 @@ class Cart
         }
     }
 
-    public function addpro($item,$id,$price,$pricetype){
-        $storedItem = ['qty'=>0,'price'=>$price,'singleprice'=>$price,'item'=>$item,'pricetype'=>$pricetype];
+    public function addpro($item,$id,$price,$pricetype,$product_prices_id){
+        $storedItem = ['qty'=>0,'price'=>$price,'singleprice'=>$price,'pricetype'=>$pricetype,'product_prices_id'=>$product_prices_id,'item'=>$item];
         if($this->items){
             if(array_key_exists($id, $this->items)){
                 $storedItem = $this->items[$id];

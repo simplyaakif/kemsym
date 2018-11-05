@@ -74,94 +74,87 @@
 </template>
 
 <script>
-    export default{
-        data(){
-            return{
-                payment:[],
-                btn_checkout:'Continue to checkout',
-                bars:'',
-                paymentmethod:'',
-                card:{
-                    number:'4758411877817150',
-                    ccv:'456',
-                    month:'05',
-                    year:'2019',
-                    name:{
-                        first:'Humza',
-                        last:'Ali',
-                    },
-                }
-            }
-        },
-        props:{
-            products:Object,
-        },
-      
-        methods:{
-            checkout(){
-                this.btn_checkout='Completing your Order';
-                this.$swal({
-                    title:'Processing Your Transaction',
-                    onOpen: () => {
-                        this.$swal.showLoading();
-                    },
-                    });
-
-
-                if(this.paymentmethod=='card'){
-                    Vue.set(this.products, 'card', this.card);
-                    console.log('paywithcardlive');
-                    fetch('pays/paywithcardlive', {
-                    method: 'post',
-                    body: JSON.stringify(this.products),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        this.payment=data;
-                        if(this.payment[0].state=='approved'){
-                            console.log('Payment Approved.')
-                        }
-                        this.$swal.close();
-                        this.$swal(
-                            'Transaction Completed',
-                            'We are processing your order now.',
-                            'success'
-                            );
-                        window.location.href =  'http://127.0.0.1:8000/payments/success';
-                    })
-                    .catch(err => {
-                        this.btn_checkout='Error';
-                        console.log(err)
-                    });
-
-                }
-                else{
-                    fetch('pays/paywithpaypallive', {
-                    method: 'post',
-                    body: JSON.stringify(this.products),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        this.payment=data;
-                        console.log('Data Sent & Json Recieved');
-                        window.location.href =this.payment.approval_url;
-                    })
-                    .catch(err => {
-                        this.btn_checkout='Error';
-                        console.log(err)
-                    });
-                }
-            }
+export default {
+  data() {
+    return {
+      payment: [],
+      btn_checkout: "Continue to checkout",
+      bars: "",
+      paymentmethod: "",
+      card: {
+        number: "4758411877817150",
+        ccv: "456",
+        month: "05",
+        year: "2019",
+        name: {
+          first: "Humza",
+          last: "Ali"
         }
+      }
+    };
+  },
+  props: {
+    products: Object
+  },
+
+  methods: {
+    checkout() {
+      this.btn_checkout = "Completing your Order";
+      this.$swal({
+        title: "Processing Your Transaction",
+        onOpen: () => {
+          this.$swal.showLoading();
+        }
+      });
+
+      if (this.paymentmethod == "card") {
+        Vue.set(this.products, "card", this.card);
+        console.log("paywithcardlive");
+        fetch("pays/paywithcardlive", {
+          method: "post",
+          body: JSON.stringify(this.products),
+          headers: {
+            "content-type": "application/json"
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.payment = data;
+            if (this.payment[0].state == "approved") {
+              console.log("Payment Approved.");
+            }
+            this.$swal.close();
+            this.$swal(
+              "Transaction Completed",
+              "We are processing your order now.",
+              "success"
+            );
+            window.location.href = "http://127.0.0.1:8000/payments/success";
+          })
+          .catch(err => {
+            this.btn_checkout = "Error";
+            console.log(err);
+          });
+      } else {
+        fetch("pays/paywithpaypallive", {
+          method: "post",
+          body: JSON.stringify(this.products),
+          headers: {
+            "content-type": "application/json"
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.payment = data;
+            console.log("Data Sent & Json Recieved");
+            window.location.href = this.payment.approval_url;
+          })
+          .catch(err => {
+            this.btn_checkout = "Error";
+            console.log(err);
+          });
+      }
     }
+  }
+};
 </script>
-
-<style>
-
-</style>

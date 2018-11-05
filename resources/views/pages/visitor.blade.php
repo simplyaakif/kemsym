@@ -19,13 +19,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="h2  text-uppercase mb1">{{Auth::user()->name}}</h2>
+
                     <?php $user = Auth::user() ?>
                     <?php $userdetails = $user->userdata ?>
+                    <?php $userorder = $user->userorder ?>
+                    <?php printf($userorder->productPrice) ?>
 
                     <fe-dashboard
                     :userdata="{{ json_encode($user) }}"
                     :userdetails = " {{ json_encode($userdetails) }} "
-                    {{--  :userOrders=" {{ }} "  --}}
+                    :userOrders=" {{ json_encode($userorder) }} "
                     ></fe-dashboard>
 
                 </div>
