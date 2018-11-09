@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use App\User;
 use App\Orders;
 use App\Subscriptions;
@@ -44,7 +45,14 @@ class AdminController extends Controller
         return view('admin/pages/orders');
     }
     public function subscriptions(){
-        return view('admin/pages/subscriptions');
+        $usersubs = DB::table('subscriptions')
+                    ->join('users','users.id','=','subscriptions.user_id')
+                    ->select('subscriptions.paypal_billing_plan_id','subscriptions.id','subscriptions.created_at','users.name', 'users.email')
+                    ->get();
+        // $users = User::all();
+        return view('admin/pages/subscriptions')
+                ->with('usersubs',$usersubs);
+                // ->with('users',$users);
     }
     public function profile(){
         return view('admin/pages/profile');

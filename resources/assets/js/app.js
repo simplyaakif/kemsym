@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 // require('./bootstrap');
-
+import 'vue-thin-modal/dist/vue-thin-modal.css'
 window.Vue = require('vue');
 import Vuex from 'vuex'
 
@@ -17,7 +17,7 @@ import VShowSlide       from 'v-show-slide';
 import VueSession       from 'vue-session';
 import VueSweetalert2   from 'vue-sweetalert2';
 import {store}          from './store/store'
-
+import VueThinModal     from 'vue-thin-modal'
 const VueUploadComponent = require('vue-upload-component');
 Vue.component('file-upload', VueUploadComponent);
 /**
@@ -31,6 +31,8 @@ Vue.use(Toaster, {timeout: 5000});
 Vue.use(VShowSlide);
 Vue.use(VueSweetalert2);
 Vue.use(Vuex);
+Vue.use(require('vue-moment'));
+Vue.use(VueThinModal)
 
 
 // Front End Components

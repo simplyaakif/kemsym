@@ -39,7 +39,9 @@ Route::get('create_paypal_plan', 'BillPlanController@create_plan');
 Route::get('subscribe/paypal/', 'BillPlanController@paypalRedirect')->name('paypal.redirect');
 Route::get('subscribe/paypal/return', 'BillPlanController@paypalReturn')->name('paypal.return')->middleware('auth');
 
-Route::get('/get-agreement/{ag_id}', 'BillPlanController@agreementDetails');
+Route::get('/get-agreement/', 'BillPlanController@agreementDetails');
+
+Route::post('/api/get-agreements/', 'BillPlanController@agDetails');
 
 Route::get('/monthly-plan-checkout/{id}/{price_id}', [
     'uses'=>'ProductsController@getMonthlyCheckout',

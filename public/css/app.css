@@ -554,7 +554,7 @@ select {
 }
 
 .nav-pills .nav-link.active {
-  background-color: transparent !important;
+  background-color: #f0f0f0 !important;
   color: #0a639d;
   border-bottom: 1px solid #0a639d;
 }

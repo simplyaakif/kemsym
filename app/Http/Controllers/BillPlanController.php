@@ -225,6 +225,7 @@ class BillPlanController extends Controller
 
         $createdAgreement = $request->ag_id;
 
+
         try {
             $agreement = Agreement::get($createdAgreement, $this->apiContext);
         } catch (Exception $ex) {
@@ -234,8 +235,32 @@ class BillPlanController extends Controller
         }
         // ResultPrinter::printResult("Retrieved an Agreement", "Agreement", $agreement->getId(), $createdAgreement->getId(), $agreement);
 
-        dd($agreement);
+        return $agreement;
 
+    }
+
+
+    public function agDetails (Request $request){
+
+        $agreementAr = $request->json();
+        
+        $agData = array();
+        
+        foreach($agreementAr as $ag){
+            try {
+                $agreement = Agreement::get($ag['paypal_billing_plan_id'], $this->apiContext);
+            } catch (Exception $ex) {
+                // ResultPrinter::printError("Retrieved an Agreement", "Agreement", $agreement->getId(), $createdAgreement->getId(), $ex);
+                // exit(1);
+                echo 'You have either cancelled the request or your session has expired';
+            }
+            $details = json_encode($agreement);
+            array_push($agData,$details);
+        }
+
+        // dd($agData);
+
+        return $agData;
     }
     
 }

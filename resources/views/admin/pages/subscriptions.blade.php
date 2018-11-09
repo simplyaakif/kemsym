@@ -27,8 +27,15 @@
         <div class="container-fluid">
             <div id="app">
                 <div class="card">
+                    <?php $user = Auth::user() ?>
+                    <?php $userdetails = $user->userdata ?>
+                    <?php $userorder = $user->userorder ?>
+
                     <div class="card-body">
-                      <admin-subs>
+                      <admin-subs
+                      :userdata="{{ json_encode($user) }}"
+                      :userSubs=" {{ json_encode($usersubs) }} "
+                      >
                         
                       </admin-subs>
                     </div>

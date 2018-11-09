@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         'api/contacts/*',
         'api/users/*',
         'kemmet/api/products/*',
-        'pays/*'
+        'pays/*',
+        'api/*'
     ];
 }
