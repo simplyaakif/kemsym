@@ -16,7 +16,14 @@
                         </div>
                         <br>
                             <h1 v-show="selectedcheck">${{currentprice}}</h1>
-                        <a :href="siteurl+'/add-to-carts/'+product.id+'/'+price_id" v-show="selectedcheck" @click="carts" class="btn-pr">Add to Cart</a>
+                        <div v-if="paymentType">
+                            <a :href="siteurl+'/monthly-plan-checkout/'+product.id+'/'+price_id" class="btn-pr">Apply for Monthly Payment</a>
+                            <p>The billing contract will be for 12 months. You will be charged ${{currentprice}}/month for the next 12 months.</p>
+                        </div>
+                        <div v-else>
+                            <a :href="siteurl+'/add-to-carts/'+product.id+'/'+price_id" v-show="selectedcheck" @click="carts" class="btn-pr">Add to Cart</a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -73,6 +80,17 @@
             else{
                 return 0;
             }
+        },
+        paymentType(){
+            if(this.selectedcheck){
+                if(this.productprice[this.selected].product_payment_type == 'Monthly'){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            
         },
         price_id(){
             return this.price.id;

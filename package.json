@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "es6-promise": "^4.2.5",
         "v-show-slide": "^1.6.0",
         "v-toaster": "^1.0.3",
         "vue-resource": "^1.5.1",

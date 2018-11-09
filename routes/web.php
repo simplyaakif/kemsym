@@ -35,6 +35,19 @@ Route::post('pays/paywithcardlive', 'PaypalPaymentController@paywithCreditCard_l
 
 
 
+Route::get('create_paypal_plan', 'BillPlanController@create_plan');
+Route::get('subscribe/paypal/', 'BillPlanController@paypalRedirect')->name('paypal.redirect');
+Route::get('subscribe/paypal/return', 'BillPlanController@paypalReturn')->name('paypal.return')->middleware('auth');
+
+Route::get('/get-agreement/{ag_id}', 'BillPlanController@agreementDetails');
+
+Route::get('/monthly-plan-checkout/{id}/{price_id}', [
+    'uses'=>'ProductsController@getMonthlyCheckout',
+    'as'=>'product.getMonthlyCheckout'
+])->middleware('auth');
+
+
+
 Route::get('/', function () {
     return view('partials/block');
 });
@@ -83,7 +96,7 @@ Route::get('/contact', 'SiteController@contact');
 Route::get('/subs', 'SiteController@subs');
 Route::get('/statement', 'SiteController@statement');
 Route::get('/register-pending', 'SiteController@pending');
-Route::get('/visitor/dashboard', 'SiteController@visitor');
+Route::get('/visitor/dashboard', 'SiteController@visitor')->name('profile');
 Route::get('/pricing-structure', 'SiteController@pStructure');
 
 Auth::routes();
@@ -106,8 +119,9 @@ Route::delete('/kemmet/api/users/{user}', 'UsersController@destroy');
 Route::get('/admin/dashboard','AdminController@index');
 Route::get('/admin/contact','AdminController@contact');
 Route::get('/admin/users','AdminController@users');
-Route::get('/admin/subscription','AdminController@subscription');
-Route::get('/admin/profile','AdminController@profile');
+Route::get('/admin/orders','AdminController@orders');
+Route::get('/admin/subscriptions','AdminController@subscriptions');
+Route::get('/admin/profile','AdminController@profile')->name('admin.profile');
 Route::get('/admin/products','AdminController@products');
 
 

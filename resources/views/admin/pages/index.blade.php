@@ -27,14 +27,14 @@
                           </div><!--/.col-->
                           <div class="col-sm-2">
                             <div class="callout callout-warning">
-                              <small class="text-muted">Pending Orders</small><br>
-                              <strong class="h4">78,623</strong>
+                              <small class="text-muted">Orders Generated</small><br>
+                              <strong class="h4">{{ $orders }}</strong>
                             </div>
                           </div><!--/.col-->
                           <div class="col-sm-2">
                             <div class="callout callout-success">
-                              <small class="text-muted">Total Active Subscriptions</small><br>
-                              <strong class="h4">49,123</strong>
+                              <small class="text-muted">Monthly Subscriptions</small><br>
+                            <strong class="h4">{{ $subs }}</strong>
                             </div>
                           </div><!--/.col-->
                           {{--  <div class="col-sm-2">

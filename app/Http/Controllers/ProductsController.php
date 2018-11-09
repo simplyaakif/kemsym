@@ -71,7 +71,16 @@ class ProductsController extends Controller
     }
 
 
-
+    public function getMonthlyCheckout(Request $request, $id, $price_id){
+        $title = 'Product';
+        $product = Products::find($id);
+        $price = ProductsPrice::find($price_id);
+        // print_r($product);
+        return view('pages.monthlycheckout')
+                ->with('title',$title) 
+                ->with('product',$product) 
+                ->with('price',$price); 
+    }
 
 
     public function getAddToCart(Request $request, $id){
@@ -168,7 +177,6 @@ class ProductsController extends Controller
         // return $cart->items;
         return view('pages.checkout',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'title'=>$title]);
 
- 
         
     }
 

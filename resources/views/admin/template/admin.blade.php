@@ -81,7 +81,7 @@
             <div class="dropdown-header text-center">
               <strong>Settings</strong>
             </div>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ route('admin.profile') }}">
               <i class="fa fa-user"></i> Profile</a>
             
             <div class="divider"></div>
@@ -134,8 +134,12 @@
             </li>
             <li class="nav-title">Plans</li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('admin/subscription')}}">
-                <i class="nav-icon icon-pie-chart"></i> Orders</a>
+              <a class="nav-link" href="{{url('admin/orders')}}">
+                <i class="nav-icon icon-pie-chart"></i> Fixed Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('admin/subscriptions')}}">
+                <i class="nav-icon icon-drawer"></i> Monthly Subscriptions</a>
             </li>
 
 

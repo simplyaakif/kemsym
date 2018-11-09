@@ -23,12 +23,13 @@
                     <?php $user = Auth::user() ?>
                     <?php $userdetails = $user->userdata ?>
                     <?php $userorder = $user->userorder ?>
-                    <?php printf($userorder->productPrice) ?>
+                    <?php $usersubs = $user->usersubs ?>
 
                     <fe-dashboard
                     :userdata="{{ json_encode($user) }}"
-                    :userdetails = " {{ json_encode($userdetails) }} "
+                    :userdetails = " {{ json_encode($userdetails) }}"
                     :userOrders=" {{ json_encode($userorder) }} "
+                    :userSubs=" {{ json_encode($usersubs) }} "
                     ></fe-dashboard>
 
                 </div>

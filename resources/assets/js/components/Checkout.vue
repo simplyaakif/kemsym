@@ -3,6 +3,7 @@
         <hr class="mb-4">
 
                             <h4 class="mb-3">Payment</h4>
+                            
 
                             <div class="d-block my-3">
                                 <div class="custom-contro custom-radio">
@@ -66,7 +67,7 @@
                             </div>
                             <hr class="mb-4">
                             
-        <button class="btn btn-primary btn-lg btn-block" type="submit" @click="checkout">
+        <button class="btn btn-pr btn-lg btn-block" type="submit" @click="checkout">
             {{btn_checkout}}
             </button>
         

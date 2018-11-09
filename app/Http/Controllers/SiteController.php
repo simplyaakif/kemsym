@@ -51,7 +51,7 @@ class SiteController extends Controller
         $userProducts = Orders::where('user_id', $user->id)
                         ->get();
 
-        printf($userProducts);
+        // printf($userProducts);
         // $productOrderData = array(
         //     'productName' => , 
         // );

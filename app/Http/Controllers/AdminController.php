@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Orders;
+use App\Subscriptions;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,9 +20,18 @@ class AdminController extends Controller
         $pending_client_count = count(
             User::where('verified','0')->get()
         );
+        $orders = count(
+            Orders::all()
+        );
+        $subs = count(
+            Subscriptions::all()
+        );
+
         return view('admin/pages/index')
                     ->with('total_client_count',$total_client_count)
-                    ->with('pending_client_count',$pending_client_count);
+                    ->with('pending_client_count',$pending_client_count)
+                    ->with('orders',$orders)
+                    ->with('subs',$subs);
 
     }
     public function contact(){
@@ -29,8 +40,11 @@ class AdminController extends Controller
     public function users(){
         return view('admin/pages/users');
     }
-    public function subscription(){
-        return view('admin/pages/subscription');
+    public function orders(){
+        return view('admin/pages/orders');
+    }
+    public function subscriptions(){
+        return view('admin/pages/subscriptions');
     }
     public function profile(){
         return view('admin/pages/profile');

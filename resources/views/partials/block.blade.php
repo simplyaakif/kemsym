@@ -92,7 +92,8 @@
                     </nav>
             </div>
         </section>
-        <section class="slider">
+
+        {{-- <section class="slider">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6"></div>
@@ -104,6 +105,27 @@
                     </div>
                 </div>
             </div>
+        </section> --}}
+    
+        <section>
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img class="d-block w-100" src="{{asset('images/slider-01.png')}}" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100" src="{{asset('images/slider-02.png')}}" alt="Second slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
         </section>
     </header>
 
@@ -149,28 +171,28 @@
                     <h2>PRODUCTS AND SERVICES</h2>
                     <br>
                     <div class="row">
-                        <div class="col-lg-2 text-center">
+                        <div class="col-sm-6 col-md-4 col-lg-2 text-center">
                             <img src="{{URL::asset('/img/ico01.png')}}" alt="" class="img-fluid">
                             <p class="text-center">Consulting</p>
                         </div>
-                        <div class="col-lg-2 text-center">
+                        <div class="col-sm-6 col-md-4 col-lg-2 text-center">
                             <img src="{{URL::asset('/img/ico02.png')}}" alt="" class="img-fluid">
                             <p class="text-center">Company screening</p>
                         </div>
-                        <div class="col-lg-2 text-center">
+                        <div class="col-sm-6 col-md-4 col-lg-2 text-center">
                             <img src="{{URL::asset('/img/ico03.png')}}" alt="" class="img-fluid">
                             <p class="text-center">Screening of applicants and employees
                                     </p>
                         </div>
-                        <div class="col-lg-2 text-center">
+                        <div class="col-sm-6 col-md-4 col-lg-2 text-center">
                             <img src="{{URL::asset('/img/ico04.png')}}" alt="" class="img-fluid">
                             <p class="text-center">Identity and records Verification, Validation &amp; Authentication</p>
                         </div>
-                        <div class="col-lg-2 text-center">
+                        <div class="col-sm-6 col-md-4 col-lg-2 text-center">
                             <img src="{{URL::asset('/img/ico05.png')}}" alt="" class="img-fluid">
                             <p class="text-center">Document and record authentication</p>
                         </div>
-                        <div class="col-lg-2 text-center">
+                        <div class="col-sm-6 col-md-4 col-lg-2 text-center">
                             <img src="{{URL::asset('/img/ico06.png')}}" alt="" class="img-fluid">
                             <p class="text-center">Credit Rating, Credit Score &amp; Credit worthiness</p>
                         </div>

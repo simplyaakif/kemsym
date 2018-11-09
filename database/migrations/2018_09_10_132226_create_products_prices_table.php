@@ -18,6 +18,7 @@ class CreateProductsPricesTable extends Migration
             $table->integer('product_id');
             $table->string('product_pricetype');
             $table->float('product_price');
+            $table->string('product_payment_type')->nullable();
             $table->timestamps();
         });
     }

@@ -3,15 +3,16 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
+                    <a class="nav-link active " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
                     <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Orders</a>
                     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Addresses</a>
-                    <a class="nav-link active" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Account Details</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Account Details</a>
+                    <a class="nav-link" id="v-pills-subs-tab" data-toggle="pill" href="#v-pills-subs" role="tab" aria-controls="v-pills-subs" aria-selected="false">Monthly Subscriptions</a>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="tab-pane show active fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <h3>Hello  {{userdata.name}}</h3>
                         <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                     </div>
@@ -27,8 +28,8 @@
                             </th>
                             <tr v-for="(order, index) in userorders" :key="index">
                                 <td> {{ index+1 }} </td>
+                                <td> {{ order}} </td>
                                 <td> {{ order.quantity }} </td>
-                                <td> </td>
                                 <td> </td>
                                 <td> </td>
                             </tr>
@@ -36,7 +37,18 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
 
-                    <div class="tab-pane fade show active" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade" id="v-pills-subs" role="tabpanel" aria-labelledby="v-pills-subs-tab">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Subscriptions Found</h4>
+                                <ul class="list-unstyled" v-for="(sub,n) in usersubs" :key="n">
+                                    <li> {{n+1}}. Subscription ID - [ {{sub.paypal_billing_plan_id}} ]</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade " id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <div class="row">
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -82,6 +94,7 @@
             userdata: Object,
             userdetails: Object,
             userorders:Array,
+            usersubs:Array,
         }
     }
 </script>
