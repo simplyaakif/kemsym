@@ -29,7 +29,7 @@
                     </p>
                     <h3><strong>Contact us today to discuss how we can help you.</strong></h3>
                     <ul class="list-inline">
-                        <li>25 Glenn Hawthorne Blvd Mississauga, On tario Canada L5R 3E6</li>
+                        <li>25 Glenn Hawthorne Blvd Mississauga, Ontario Canada L5R 3E6</li>
                         <li>Email : <a href="mailto:bismarckansong@kemmetsystems.com">Bismarckansong@kemmetsystems.com</a></li>
                         <li>Phone : <a href="tel:+1-647-716-5476">1-647-716-5476</a></li>
                         <li>Web : <a href="http://www.kemmetsystems.com">www.kemmetsystems.com</a></li>

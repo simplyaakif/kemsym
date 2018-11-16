@@ -18,15 +18,46 @@
 <body>
     
     <header class="main">
+        <section class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a target="_blank" href="https://www.facebook.com/bansong">
+                                    <img src="{{asset('img/facebook.png')}}" width="20" alt="">
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a target="_blank" href="https://twitter.com/KemmetSystems?s=09">
+                                    <img src="{{asset('img/twitter.png')}}" width="20" alt="">
+                                </a></li>
+                            <li class="list-inline-item">
+                                <a target="_blank" href="https://www.instagram.com/kemmetsystems1/?utm_source=ig_profile_share&igshid=187jytufoe00u">
+                                    <img src="{{asset('img/instagram.png')}}" width="20" alt="">
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="navigate">
             <div class="container">
                     <nav class="navbar navbar-expand-lg navbar-light ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
                             <a class="navbar-brand" href="{!! url('/'); !!}">
                                 <img src="{{URL::asset('/img/logo.png')}}" style="max-width: 100px;" alt="" class="img-fluid">
                             </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                              <span class="navbar-toggler-icon"></span>
-                            </button>
+
+                            <a class="mobile-cart" href="{{ route('product.shoppingCart')}}">
+                                        {{-- <i class="fas fa-shopping-cart"></i> --}}
+                                        <img class="cart" src="{{asset ('img/cart.png')}}" alt="" srcset="">
+                                        <span class="cart-badge2 ">
+                                            {{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}
+                                        </span>
+                            </a>
                           
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                               <ul class="navbar-nav ml-auto">
@@ -78,8 +109,9 @@
                                         </div>
                                     </li>
                                 @endguest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('product.shoppingCart')}}">
+
+                                <li class=" desktop-cart">
+                                    <a class="" href="{{ route('product.shoppingCart')}}">
                                         {{-- <i class="fas fa-shopping-cart"></i> --}}
                                         <img class="cart" src="{{asset ('img/cart.png')}}" alt="" srcset="">
                                         <span class="cart-badge ">
@@ -87,6 +119,7 @@
                                         </span>
                                       </a>
                                   </li>
+
                               </ul>
                             </div>
                     </nav>
@@ -102,12 +135,12 @@
         <div class="u-foot">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 text-center">
-                        <div class="logo">
-                            <a href="{!! url('/'); !!}">
-                                <img src="{{URL::asset('img/greyLogo.png')}}" alt="" class="img-fluid">
-                            </a>
-                        </div>
+                <div class="offset-md-5 col-md-2 text-center">
+                            <div class="logo">
+                                <a href="{!! url('/'); !!}">
+                                    <img src="{{URL::asset('img/logo.png')}}" alt="" class="img-fluid">
+                                </a>
+                            </div>
                     </div>
                     <div class="col-md-12">
                         <div class="menu">

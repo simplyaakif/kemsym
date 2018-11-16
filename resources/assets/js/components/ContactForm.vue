@@ -13,8 +13,7 @@
             <div class="form-group">
                 <textarea rows="10" class="form-control" placeholder="Your Message" v-model="contact.contact_message"  ></textarea>
             </div>
-            <button type="submit" class="btn btn-pm">Save</button>
-            <button @click="" class="btn btn-dark">Reset</button>
+            <button type="submit" class="btn btn-pm btn-block">Send Message</button>
         </form>
     </div>
 </template>
@@ -46,7 +45,7 @@
             addContact() {
             if (this.edit === false) {
                     // Add
-                    fetch('api/contacts', {
+                    fetch('/api/contacts', {
                     method: 'post',
                     body: JSON.stringify(this.contact),
                     headers: {
@@ -59,7 +58,9 @@
                 this.contact.contact_web = '';
                 this.contact.contact_email = '';
                 this.contact.contact_message = '';
-                alert('Contact Added');
+                this.$swal();
+
+                this.$swal('Message Sent Successfully');
                 this.fetchData();
             })
             .catch(err => console.log(err));

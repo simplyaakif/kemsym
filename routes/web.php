@@ -37,7 +37,8 @@ Route::post('pays/paywithcardlive', 'PaypalPaymentController@paywithCreditCard_l
 
 Route::get('create_paypal_plan', 'BillPlanController@create_plan');
 Route::get('subscribe/paypal/', 'BillPlanController@paypalRedirect')->name('paypal.redirect');
-Route::get('subscribe/paypal/return', 'BillPlanController@paypalReturn')->name('paypal.return')->middleware('auth');
+
+Route::get('subscribe/paypal/return', 'BillPlanController@paypalReturn')->name('paypal.return');
 
 Route::get('/get-agreement/', 'BillPlanController@agreementDetails');
 
@@ -104,17 +105,17 @@ Route::get('/pricing-structure', 'SiteController@pStructure');
 Auth::routes();
 
 //Contact Section
-Route::get('/kemmet/api/contacts', 'ContactController@index');
-Route::get('/kemmet/api/contacts/{contact}','ContactController@show');
-Route::post('/kemmet/api/contacts', 'ContactController@store');
-Route::put('/kemmet/api/contacts', 'ContactController@store');
-Route::delete('/kemmet/api/contacts/{contact}', 'ContactController@destroy');
+Route::get('/api/contacts', 'ContactController@index');
+Route::get('/api/contacts/{contact}','ContactController@show');
+Route::post('/api/contacts', 'ContactController@store');
+Route::put('/api/contacts', 'ContactController@store');
+Route::delete('/api/contacts/{contact}', 'ContactController@destroy');
 //Users Section
-Route::get('/kemmet/api/users', 'UsersController@index');
-Route::get('/kemmet/api/users/{user}','UsersController@show');
-Route::post('/kemmet/api/users', 'UsersController@store');
-Route::put('/kemmet/api/users', 'UsersController@store');
-Route::delete('/kemmet/api/users/{user}', 'UsersController@destroy');
+Route::get('/api/users', 'UsersController@index');
+Route::get('/api/users/{user}','UsersController@show');
+Route::post('/api/users', 'UsersController@store');
+Route::put('/api/users', 'UsersController@store');
+Route::delete('/api/users/{user}', 'UsersController@destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -136,9 +137,21 @@ Route::get('/product/{id}', [
     
 
 //Products API
-Route::get('/kemmet/api/products', 'ProductsController@index');
-Route::post('/kemmet/api/products/image', 'ProductsController@imgupload');
-Route::get('/kemmet/api/products/{product}','ProductsController@show');
-Route::post('/kemmet/api/products', 'ProductsController@store');
-Route::put('/kemmet/api/products', 'ProductsController@store');
-Route::delete('/kemmet/api/products/{product}', 'ProductsController@destroy');
+Route::get('/api/products', 'ProductsController@index');
+Route::post('/api/products/image', 'ProductsController@imgupload');
+Route::get('/api/products/{product}','ProductsController@show');
+Route::post('/api/products', 'ProductsController@store');
+Route::put('/api/products', 'ProductsController@store');
+Route::delete('/api/products/{product}', 'ProductsController@destroy');
+
+
+
+
+//Products&Services
+
+Route::get('/products/consulting', 'SiteController@consulting');
+Route::get('/products/company-screening', 'SiteController@company_screening');
+Route::get('/products/applicants-employees', 'SiteController@applicants_employees');
+Route::get('/products/verification-validation', 'SiteController@verifciation_validation');
+Route::get('/products/document-authentication', 'SiteController@document_authentication');
+Route::get('/products/credit-rating', 'SiteController@credit_rating');

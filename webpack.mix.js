@@ -18,3 +18,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.options({
 processCssUrls: false // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
 });
+
+
+mix.disableSuccessNotifications();

@@ -56,7 +56,7 @@ body, input, label, form, span {
   color: #fff;
 }
 
-.description h2:after, .market h2:after, .services h2:after, .af-c:after {
+.description h2:after, .market h2:after, .services h2:after, .subscription h2:after, .af-c:after {
   content: '';
   height: 0.4rem;
   width: 8rem;
@@ -65,7 +65,7 @@ body, input, label, form, span {
   margin: 1rem auto;
 }
 
-.subscription h2:after, .slider h4:after, .page-details h2:after, .af-l:after {
+.slider h4:after, .page-details h2:after, .af-l:after {
   content: '';
   height: 0.4rem;
   width: 8rem;
@@ -133,14 +133,14 @@ body, input, label, form, span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #F9F9F9;
+  padding: 50px 0px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 .crow .pricing {
-  background: url("../img/bluBkgd.jpg");
-  color: #fff;
-  padding: 10rem 5rem;
+  padding: 5rem 5rem 0rem 5rem;
 }
 
 .crow .pricing h2 {
@@ -148,10 +148,14 @@ body, input, label, form, span {
   font-weight: 700;
 }
 
-.crow .about {
-  background: url("../img/companyStaff.jpg");
-  min-height: 300px;
-  background-size: cover;
+.crow .pricing h2:after {
+  background-color: #0a639d;
+}
+
+@media screen and (min-width: 1200px) {
+  .crow .about img {
+    margin-top: 30px;
+  }
 }
 
 .triBefore {
@@ -162,7 +166,7 @@ body, input, label, form, span {
   content: '';
   width: 3rem;
   height: 5rem;
-  position: relative;
+  position: absolute;
   background-color: #095f98;
   display: inline-block;
   z-index: 9;
@@ -196,11 +200,10 @@ body, input, label, form, span {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 0rem 0rem;
 }
 
 .pricing .crow .pricing {
-  background: url("../img/bluBkgd.jpg");
-  color: #fff;
   padding: 5rem 5rem;
 }
 
@@ -209,15 +212,19 @@ body, input, label, form, span {
   font-weight: 700;
 }
 
+.pricing .crow .pricing h2:after {
+  background-color: #0a639d;
+}
+
 .pricing .crow .charts {
   background: url("../img/charts.jpg");
-  min-height: 400px;
   background-size: cover;
 }
 
 .pricing .crow .presentation {
   background: url("../img/presentations.jpg");
   min-height: 400px;
+  padding: 5rem 5rem;
   background-size: cover;
 }
 
@@ -255,12 +262,51 @@ body, input, label, form, span {
   font-size: 4.2rem;
 }
 
+.services a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.services .ups-s {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.services .ups-s:hover {
+  color: #0a639d;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+}
+
 .subscription {
   padding: 8rem 0rem;
 }
 
 .subscription h2 {
-  font-size: 4.2rem;
+  font-size: 2.8rem;
+}
+
+.subscription .plan {
+  padding-bottom: 20px;
+  margin-top: 30px;
+  border: 1px solid #0a639d;
+}
+
+.subscription .plan h3 {
+  display: block;
+  background-color: #0a639d;
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 2.2rem;
+  padding: 10px 0;
+}
+
+.subscription .plan p {
+  margin-top: 20px;
 }
 
 .subscription .block {
@@ -360,7 +406,47 @@ body, input, label, form, span {
 }
 
 .main {
-  padding: 2rem 0rem;
+  padding-bottom: 0rem;
+}
+
+.mobile-cart {
+  position: relative;
+  margin-top: 24px;
+}
+
+@media screen and (min-width: 991px) {
+  .mobile-cart {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .desktop-cart {
+    display: none;
+  }
+}
+
+.desktop-cart {
+  text-align: right;
+  margin-right: -30px;
+}
+
+.navigate {
+  padding: 1rem 0px;
+}
+
+.top-bar {
+  border-bottom: 1px solid #eee;
+}
+
+.top-bar ul {
+  margin-bottom: 0px;
+  padding: 6px 0px;
+  text-align: center;
+}
+
+.top-bar li a {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -516,6 +602,20 @@ select {
   position: relative;
   right: 20px;
   bottom: 30px;
+  font-size: 1.4rem;
+}
+
+.cart-badge2 {
+  background-color: #0a639d;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 300px;
+  position: absolute;
+  right: -10px;
+  bottom: 35px;
   font-size: 1.4rem;
 }
 

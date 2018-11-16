@@ -62,4 +62,38 @@ class SiteController extends Controller
         $title = 'Pricing Structure';
         return view('pages/pricingStructure')->with('title', $title);
     }
+
+
+    public function consulting(){
+        $title = 'Consulting';
+        $content = 'Kemmet Systems will help companies to solve their strategic and long range planning issues and problems.        The company will focus mostly in information Technology, Project management and Business analysis.';
+        return view('products/product')->with('title', $title)->with('content',$content);
+    }
+    public function company_screening(){
+        $title = 'Company screening';
+        $content = 'Kemmet Systems will use governmental agencies and public records and information to screen companies to authenticate them for our clients.';
+        return view('products/product')->with('title', $title)->with('content',$content);
+    }
+    public function applicants_employees(){
+        $title = 'Screening of applicants and employees';
+        $content = 'Kemmet Systems will use quizzes and surveys to verify and validate applicants and employees readiness and suitability for job roles and employment for our clients.';
+        return view('products/product')->with('title', $title)->with('content',$content);
+    }
+    public function verifciation_validation(){
+        $title = 'Identity and records Verification, Validation & Authentication';
+        $content = 'Kemmet Systems will verify, validate and authenticate individuals identities and records for our clients.';
+        return view('products/product')->with('title', $title)->with('content',$content);
+    }
+    public function document_authentication(){
+        $title = 'Document and record authentication';
+        $content = 'Kemmet Systems will use governmental business registration information and records to validate companies for our clients.';
+        return view('products/product')->with('title', $title)->with('content',$content);
+    }
+    public function credit_rating(){
+        $title = 'Credit Rating, Credit Score & Credit worthiness';
+        $content = 'Kemmet Systems will store individuals and companies information to authenticate that they are making regular payments on their loans and Credit cards on time and are meeting their Financial obligations. The company will also analyze and update the complete portfolio for this individuals credit score and rating at the end of every month.';
+        return view('products/product')->with('title', $title)->with('content',$content);
+    }
+
+
 }

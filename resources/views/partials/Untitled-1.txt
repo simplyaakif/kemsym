@@ -1,0 +1,48 @@
+Hi there,
+In regard to the Front Page edits you mentioned, they have been modified accordingly.
+These includes
+1. Centralization of Top Bar Social Icons.
+2. Inline Alignment of About Us section (As per your old website design)
+3. The downgrading of PRICING STRATEGY & PRICING STRUCTURE sections. (Removal of Blue Backgrounds).
+4. Old site layout for the SUBSCRIPTION PLANS FOR SERVICES section.
+
+Note: Unfortunately the part where you says link colours
+ "Please centre the Media links like this use their links colours"
+is still unclear. As we have made it like your original site. 
+Are you referring to Link Colours as in Original Branding Colors of Facebook, Twitter, And Instagram or something different? Kindly update on this.
+
+In regard to above-mentioned points, Do review those and let us know if something is not according to your liking.
+
+The Part where you are asking about the changes in regard to the Product Cart and Checkout process:
+Kindly make following points clear regarding the different payment options available.
+
+Currently, there are products on your site which have two type of payment solutions available a Fixed one and Monthly one. For Instance: DOCUMENT AND RECORD AUTHENTICATION ( http://kemmetsystems.com/product/document-and-record-authentication/ ) which offers the following options
+
+Fixed Ones
+1. Minor Problem - $199
+2. Complex Problem - $299
+
+Monthly Ones ( Following two requires at least 12 Month order )
+3. Monthly Cost Plan for Minor Problem - $189.05 (A 12-month order is required to get the 5 % monthly discount offered)
+4. Monthly Cost Plan for Complex Problem. - $284.05 (A 12-month order is required to get the 5 % monthly discount offered) 
+
+Now when you add Monthly ones, though in the start it shows quantity as 12 but if you go ahead and try to update the quantity to any less than 12, For Instance, 5, your website lets you do that. (Which we think is not something you want) and any visitor will still be able to go to checkout with the discount.
+
+Another confusion your current system creates is that you state a monthly Cost with 12 months, which means subscription. For instance, the client should be charged an amount of $189.05 per month for the next 12 consecutive months. 
+Whereas your current system generates a total bill of $2,268.60 ($189.05*12) at the time of checkout.
+Do you want your clients to pay Monthly cost plan on per month basis ($189.05) or on an Annual Basis ($2,268.60 )?
+
+The reason this is a big big issue is that both of these uses different payment setups and International Compliances. 
+In the case of a monthly payment system, you cant have two products in the cart at the same time. This is why our system (http://kemmet.angaraa.com/) in the case of DOCUMENT AND RECORD AUTHENTICATION when chosen with monthly payment module, the site takes you directly to the payment module and you can only pay it via Paypal and over there you may choose Credit Card. 
+The limitation of only one monthly product in the cart at a time is not our doing but rather Paypal method of doing things according to International Rules and Compliances.
+
+In the same manner, when you are saying the calculation of 13 % HST, it requires a bit of time, it needs to be added properly on the core level. It's not a mere matter of adding a field but rather doing things according to the Internet Payment Compliances. So we ask for your patience in this matter, to do things properly.
+
+
+Kindly clear how would you like to receive payment for Monthly Plan?
+1. A Monthly Cost paid on per month basis for the next 12 months 
+OR
+2. A Monthly Cost paid Annually as a whole of 12 Months
+
+
+In the meantime, we will integrate the HST calculation accordingly.

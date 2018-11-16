@@ -15,11 +15,19 @@
     </div>
     <div class="page-details">
         <div class="container">
-            <monthly-return-details
+                <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        Congratulations your billing plan has been created.
+                    </p>
+                </div>
+                
+            </div>
+            <!-- <monthly-return-details
                 :paypal_id={{$ag_id}}
             >
 
-            </monthly-return-details>
+            </monthly-return-details> -->
 
             <div class="row">
                 <div class="col-md-12 text-center">
