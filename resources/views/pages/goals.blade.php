@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-6">
                     <h2>OUR GOALS</h2>
-                    <p>To offer an Online Web Solution services to diverse Clients and stakeholders who will need these services and make it easier for Governmental agencies, financial institutions and other institutions to verify, validate and authenticate their clients identities and documents in order to offer services to them.</p>
+                    <p>To offer an Online Web Solution services to diverse Clients and stakeholders who will need these services <br><br> To make it easier for Governmental agencies, financial institutions and other institutions to verify, validate and authenticate their clients identities and documents in order to offer services to them.</p>
                 </div>
             </div>
         </div>

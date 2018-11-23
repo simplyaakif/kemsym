@@ -149,6 +149,7 @@
                                             <th scope="col"> </th>
                                             <th scope="col">Product</th>
                                             <th scope="col" class="text-right">Price</th>
+                                            <th scope="col" class="text-right">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -161,13 +162,22 @@
                                                 <h5>{{$product['pricetype']}}</h5>
                                             </td>
                                             <td class="text-right">${{$product['singleprice']}}</td>
+                                            <td class="text-right">${{$product['singleprice']*$product['qty']}}</td>
 
                                         </tr>
                                         @endforeach
 
                                         <tr>
+                                            <td>Sub-Total</td>
+                                            <td colspan="3" class="text-right">$ {{$totalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HST</td>
+                                            <td colspan="3" class="text-right">$ {{$totalPrice*.13}}</td>
+                                        </tr>
+                                        <tr>
                                             <td><strong>Total</strong></td>
-                                            <td colspan="2" class="text-right"><strong>$ {{$totalPrice}}</strong></td>
+                                            <td colspan="3" class="text-right"><strong>$ {{$totalPrice + $totalPrice*.13}}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>

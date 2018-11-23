@@ -83,7 +83,11 @@ body, input, label, form, span {
   margin: 1rem 0rem;
 }
 
-.navigate, a, li, input, button {
+.navigate,
+a,
+li,
+input,
+button {
   font-size: 1.8rem;
 }
 
@@ -273,13 +277,18 @@ body, input, label, form, span {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .services .ups-s:hover {
   color: #0a639d;
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
+}
+
+body {
+  font-size: 2rem;
+  color: #111;
 }
 
 .subscription {
@@ -502,7 +511,10 @@ body, input, label, form, span {
   font-size: 1.6rem;
 }
 
-.form-control, input, button, .btn {
+.form-control,
+input,
+button,
+.btn {
   font-size: 1.6rem;
 }
 
@@ -519,7 +531,8 @@ select {
   margin: 2rem 0rem;
 }
 
-.contactform input, .contactform textarea {
+.contactform input,
+.contactform textarea {
   padding: 1rem;
   font-size: 1.6rem;
 }
@@ -552,17 +565,17 @@ select {
 
 .product h3 {
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 2.2rem !important;
   margin-top: 1rem;
 }
 
 .product .price {
-  font-size: 2rem;
+  font-size: 2rem !important;
   margin-bottom: 0rem;
 }
 
 .product .product_description {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 
 .btn-pr {
@@ -624,7 +637,7 @@ select {
 }
 
 .h3-price {
-  font-size: 1.4rem !important;
+  font-size: 1.8rem !important;
 }
 
 .btn-price {
@@ -715,4 +728,33 @@ select {
 hr {
   display: block;
   width: 100%;
+}
+
+.quantity-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.quantity-toggle input {
+  border: 0;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  width: 50px;
+  text-align: center;
+  padding: 0 .5rem;
+}
+
+.quantity-toggle button {
+  width: 34px;
+  border: 2px solid #ddd;
+  padding: .5rem;
+  background: #f5f5f5;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.swal2-popup {
+  font-size: 1.6rem !important;
 }

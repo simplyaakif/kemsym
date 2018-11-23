@@ -17,17 +17,35 @@ class Cart
         }
     }
 
-    public function addpro($item,$id,$price,$pricetype,$product_prices_id){
+    public function addpro($item,$id,$price,$pricetype,$product_prices_id,$quantity){
+        $storedItem = ['qty'=>0,'price'=>$price,'singleprice'=>$price,'pricetype'=>$pricetype,'product_prices_id'=>$product_prices_id,'item'=>$item];
+        if($this->items){
+            if(array_key_exists($product_prices_id, $this->items)){
+                $storedItem = $this->items[$product_prices_id];
+            }
+        }
+        // dd($quantity);
+        $storedItem['qty'] += $quantity;
+        $storedItem['price']= $price * $storedItem['qty'];
+        $this->items[$product_prices_id]=$storedItem;
+
+
+        $this->totalQty +=$quantity;
+        $this->totalPrice += $storedItem['price'];
+    }
+
+    public function oldaddpro($item,$id,$price,$pricetype,$product_prices_id,$quantity){
         $storedItem = ['qty'=>0,'price'=>$price,'singleprice'=>$price,'pricetype'=>$pricetype,'product_prices_id'=>$product_prices_id,'item'=>$item];
         if($this->items){
             if(array_key_exists($id, $this->items)){
                 $storedItem = $this->items[$id];
             }
         }
-        $storedItem['qty']++;
+        // dd($quantity);
+        $storedItem['qty'] + $quantity;
         $storedItem['price']= $price * $storedItem['qty'];
         $this->items[$id]=$storedItem;
-        $this->totalQty++;
+        $this->totalQty + $quantity;
         $this->totalPrice += $price;
     }
 
@@ -56,5 +74,29 @@ class Cart
         $this->totalQty-=$this->items[$id]['qty'];
         $this->totalPrice-=$this->items[$id]['price'];
         unset($this->items[$id]);
+    }
+
+    public function updateItem($item_id,$qty){
+        // $this->totalQty-=$this->items[$id]['qty'];
+        // $this->totalPrice-=$this->items[$id]['price'];
+
+        $this->items[$item_id]['qty'] = $qty;
+        $this->items[$item_id]['price'] = $this->items[$item_id]['singleprice'] * $qty;
+
+        $toQ = 0;
+        $vtoQt = 0;
+        $vitems = $this->items;
+
+        foreach($vitems as $vitem){
+            $tots  = $vitem['qty'] * $vitem['singleprice']; 
+            $vtoQt  += $vitem['qty']; 
+            $toQ += $tots;
+        }
+        // $this->totalPrice-=$this->items[$item_id]['price'];
+        $this->totalQty = $vtoQt;
+        $this->totalPrice = $toQ;
+        // dd($this->items);
+        // $this->items[$item_id]['price']= $price * $storedItem['qty'];
+        // unset($this->items[$id]);
     }
 }

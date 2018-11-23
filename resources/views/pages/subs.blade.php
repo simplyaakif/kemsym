@@ -23,8 +23,10 @@
                             @foreach ($productChunk as $product)
                             <div class="col-md-4">
                                 <div class="text-center product">
-                                    <img src="{{asset($product->img_path)}}" alt="" class="img-fluid">
-                                    <h3 class="h3-product">{{$product->product_name}}</h3>
+                                    <a style="color:inherit;text-decoration:none;" href="{{route('product.singleProduct',['id'=>$product->id])}}">
+                                        <img src="{{asset($product->img_path)}}" alt="" class="img-fluid">
+                                        <h3 class="h3-product">{{$product->product_name}}</h3>
+                                    </a>
                                     <p class="h3-price">${{$product->productprice->min('product_price')}} - ${{$product->productprice->max('product_price')}}</p>
                                     <p class="product_description">{{$product->product_subHeading}}</p>
                                     <a class="btn-price" href="{{route('product.singleProduct',['id'=>$product->id])}}">Select Options</a>

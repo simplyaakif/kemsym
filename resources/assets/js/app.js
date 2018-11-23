@@ -16,8 +16,9 @@ import Toaster          from 'v-toaster';
 import VShowSlide       from 'v-show-slide';
 import VueSession       from 'vue-session';
 import VueSweetalert2   from 'vue-sweetalert2';
-import {store}          from './store/store'
-import VueThinModal     from 'vue-thin-modal'
+import {store}          from './store/store';
+import VueThinModal     from 'vue-thin-modal';
+import VeeValidate      from 'vee-validate';
 const VueUploadComponent = require('vue-upload-component');
 Vue.component('file-upload', VueUploadComponent);
 /**
@@ -33,7 +34,7 @@ Vue.use(VueSweetalert2);
 Vue.use(Vuex);
 Vue.use(require('vue-moment'));
 Vue.use(VueThinModal)
-
+Vue.use(VeeValidate);
 
 // Front End Components
 Vue.component('example-component',          require('./components/ExampleComponent.vue'));
@@ -46,6 +47,7 @@ Vue.component('fe-checkout',                require('./components/Checkout.vue')
 Vue.component('fe-dashboard',               require('./components/UserFE.vue'));
 Vue.component('bill-plan',                  require('./components/PlanComponent.vue'));
 Vue.component('monthly-return-details',     require('./components/monthlyDetails.vue'));
+Vue.component('v-cart',                     require('./components/vCart.vue'));
 
 
 // Admin Components 

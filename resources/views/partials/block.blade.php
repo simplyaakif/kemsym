@@ -333,7 +333,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="menu">
-                            <ul class="list-inline">
+                            <ul class="list-inline" style="color:#fff;">
                                 <li class="list-inline-item"><a href="{!! url('/'); !!}">Home</a></li>
                                 <li class="list-inline-item"><a href="{!! url('/goals'); !!}">Goals</a></li>
                                 <li class="list-inline-item"><a href="{!! url('/mission'); !!}">Mission</a></li>
@@ -367,15 +367,24 @@
         <div class="l-foot">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 text-center text-md-left">
                         <p>© 2018 All Rights Reserved. </p>
                     </div>
-                    <div class="col-md-6">
-                        <ul class="text-right list-inline">
-                            <li class="list-inline-item"><a href="https://www.facebook.com/bansong"><i class="fab fa-facebook-square"></i></a></li>
-                            <li class="list-inline-item"><a href="https://twitter.com/KemmetSystems?s=09"><i class="fab fa-twitter-square"></i></a></li>
-                            <li class="list-inline-item"><a href="https://instagram.com/kemmetsystems1?utm_source=ig_profile_share&igshid=187jytufoe00u"><i
-                                        class="fab fa-instagram"></i></a></li>
+                    <div class="col-12 col-md-6 text-center text-md-right">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a target="_blank" href="https://www.facebook.com/bansong">
+                                    <img src="{{asset('img/facebook.png')}}" width="20" alt="">
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a target="_blank" href="https://twitter.com/KemmetSystems?s=09">
+                                    <img src="{{asset('img/twitter.png')}}" width="20" alt="">
+                                </a></li>
+                            <li class="list-inline-item">
+                                <a target="_blank" href="https://www.instagram.com/kemmetsystems1/?utm_source=ig_profile_share&igshid=187jytufoe00u">
+                                    <img src="{{asset('img/instagram.png')}}" width="20" alt="">
+                                </a></li>
                         </ul>
                     </div>
                 </div>

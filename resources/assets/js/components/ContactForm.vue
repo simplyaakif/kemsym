@@ -5,7 +5,7 @@
                 <input type="text" class="form-control" placeholder="Your Name" v-model="contact.contact_name" >
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your Email" v-model="contact.contact_email" >
+                <input type="email" class="form-control" placeholder="Your Email" v-validate="'required|email'" v-model="contact.contact_email" >
             </div>
             <div class="form-group">
                 <input type="" class="form-control" placeholder="Website" v-model="contact.contact_web" >
@@ -25,12 +25,12 @@
 
                 contacts: [],
                 contact: {
-                _token: document.querySelector("meta[name='csrf-token']").getAttribute("content"),
-                contact_name: '',
-                contact_web:'',
-                contact_message: '',
-                contact_email:'',
-                status:'',
+                    _token: document.querySelector("meta[name='csrf-token']").getAttribute("content"),
+                    contact_name: null,
+                    contact_web:null,
+                    contact_message: null,
+                    contact_email:null,
+                    status:'',
                 },
                 contact_id:'',
                 search:'',
@@ -45,25 +45,32 @@
             addContact() {
             if (this.edit === false) {
                     // Add
-                    fetch('/api/contacts', {
+                    if(this.contact.contact_name ==null || this.contact.contact_message==null || this.contact.contact_email==null){
+                        this.$swal('Note','One of the Required Fields are missing','info');
+                    } else{
+                        fetch('/api/contacts', {
                     method: 'post',
                     body: JSON.stringify(this.contact),
                     headers: {
                         'content-type': 'application/json'
                     }
-            })
-            .then(res => res.json())
-            .then(data => {
-                this.contact.contact_name = '';
-                this.contact.contact_web = '';
-                this.contact.contact_email = '';
-                this.contact.contact_message = '';
-                this.$swal();
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        this.contact.contact_name = '';
+                        this.contact.contact_web = '';
+                        this.contact.contact_email = '';
+                        this.contact.contact_message = '';
+                        this.$swal();
 
-                this.$swal('Message Sent Successfully');
-                this.fetchData();
-            })
-            .catch(err => console.log(err));
+                        this.$swal('Message Sent Successfully');
+                        this.fetchData();
+                    })
+                    .catch(err => console.log(err));
+
+                    }
+
+                    
             } else {
                 // Update
                 fetch('api/contacts', {

@@ -11,12 +11,27 @@
 |
 */
 
+
+Route::get('/clearC',function(){
+    Session::forget('cart');
+    echo 'Cart Cleard';
+});
+
+Route::get('/showC',function(){
+    dd(session()->get('cart'));
+});
+
 Route::get('/test', function(){
     $user = Auth::user();
     $userDetails = $user->userdata;
     printf($user) ;
     printf($userDetails) ;
 });
+
+
+
+Route::get('/qty-update/{item_id}/{qty}','ProductsController@qtyUpdate');
+
 
 Route::get('/paywithcard', 'PaypalPaymentController@paywithCreditCard');
 Route::get('/paywithpaypal', 'PaypalPaymentController@paywithPaypal');
@@ -77,7 +92,7 @@ Route::get('/add-to-cart/{id}', [
     'as'=>'product.addToCart'
 ]);
 
-Route::get('/add-to-carts/{id}/{price_id}', [
+Route::get('/add-to-carts/{id}/{price_id}/{quantity}', [
     'uses'=>'ProductsController@getAddToCarts',
     'as'=>'product.addToCarts'
 ]);

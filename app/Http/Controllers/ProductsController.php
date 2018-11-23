@@ -95,14 +95,14 @@ class ProductsController extends Controller
     }
 
 
-    public function getAddToCarts(Request $request, $id, $price_id){
+    public function getAddToCarts(Request $request, $id, $price_id, $quantity){
         $product = Products::find($id);
         $price = ProductsPrice::find($price_id);
         $oldCart = Session::has('cart')? Session::get('cart'):null;
         $cart = new Cart($oldCart);
+        $quantity = intval($quantity);
 
-        $cart->addpro($product,$price->id,$price->product_price,$price->product_pricetype,$price_id);
-
+        $cart->addpro($product,$price->id,$price->product_price,$price->product_pricetype,$price_id,$quantity);
         $request->session()->put('cart',$cart);
         // dd($request->session()->get('cart'));
         return back();
@@ -116,7 +116,33 @@ class ProductsController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart ($oldCart);
         // dd($cart);
-        return view('pages.shopping-cart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'title'=>$title]);
+        
+        // $cartProducts = array_values($cart->items);
+
+        $items = $cart->items;
+        $cartProducts = array();
+        
+        foreach($items as $item) { 
+            $its['qty'] = $item['qty']; 
+            $its['price'] = $item['price']; 
+            $its['singleprice'] = $item['singleprice']; 
+            $its['pricetype'] = $item['pricetype']; 
+            $its['product_prices_id'] = $item['product_prices_id']; 
+            $its['pro'] = ProductsPrice::findOrFail($item['product_prices_id']);
+            $its['item'] = Products::findOrFail($its['pro']['product_id']);
+            array_push($cartProducts,$its);
+        }
+
+        // dd($cartProducts);
+
+        // $cartProducts = $cart->items;
+        // var_dump($cartProducts);
+
+        // die();
+
+        $prods = Products::all();
+
+        return view('pages.shopping-cart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'title'=>$title,'vProducts'=>$cartProducts]);
     }
     
     public function getRemoveItem($id){
@@ -133,6 +159,22 @@ class ProductsController extends Controller
 
         Session::put('cart',$cart);
         return back();
+    }
+
+
+    public function qtyUpdate($item_id,$qty){
+        // $dd($qty);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->updateItem($item_id,$qty);
+        
+        if(count($cart->items)>0 ){
+            Session::put('cart',$cart);
+        }
+        
+        return 'Updated';
+        // dd(session()->get('cart'));
+   
     }
 
 
@@ -175,6 +217,8 @@ class ProductsController extends Controller
         // dd($cart);
 
         // return $cart->items;
+        // $cartProducts = json_encode($cart->items);
+        // dd($cartProducts);
         return view('pages.checkout',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'title'=>$title]);
 
         
